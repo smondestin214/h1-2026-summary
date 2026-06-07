@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarah Mondestin · H1 2026 (Accordion Preview)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --p:#6B3FA0;--pd:#4A2878;--pl:#EDE7F6;--pm:#D4BBEE;
+  --g:#1E6B3A;--gl:#E6F4EC;
+  --a:#B45309;--al:#FEF3C7;
+  --d:#111827;--g7:#374151;--g5:#6B7280;--g3:#D1D5DB;--g1:#F9FAFB;
+  --w:#fff;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#F0EBF8;color:var(--g7);font-size:14px;line-height:1.6}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:99;background:var(--pd);height:44px;display:flex;align-items:center;gap:2px;padding:0 24px;box-shadow:0 2px 10px rgba(74,40,120,.3)}
+.nav-name{font-size:13px;font-weight:700;color:#fff;margin-right:auto}
+nav a{color:rgba(255,255,255,.65);text-decoration:none;font-size:11.5px;font-weight:500;padding:5px 9px;border-radius:5px;transition:.15s;white-space:nowrap}
+nav a:hover{background:rgba(255,255,255,.15);color:#fff}
+
+/* PAGE */
+.wrap{max-width:920px;margin:0 auto;padding:0 20px 80px}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--pd),var(--p) 60%,#9B59D0);padding:48px 24px 40px;margin:0 -20px 32px;color:#fff}
+.hero-eye{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--pm);margin-bottom:8px}
+.hero h1{font-size:32px;font-weight:800;line-height:1.15;margin-bottom:6px}
+.hero-role{font-size:15px;color:rgba(255,255,255,.7);margin-bottom:32px}
+.hero-role span{color:rgba(255,255,255,.95);font-weight:600}
+
+/* STAT GRID */
+.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.stat{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:14px 16px;backdrop-filter:blur(6px);text-decoration:none;cursor:pointer;transition:background .15s,transform .15s,box-shadow .15s}
+.stat:hover{background:rgba(255,255,255,.25);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.stat-n{font-size:28px;font-weight:800;color:#fff;line-height:1;margin-bottom:2px}
+.stat-l{font-size:10.5px;color:rgba(255,255,255,.6);font-weight:500;text-transform:uppercase;letter-spacing:.05em}
+
+/* SECTION */
+.sec{margin-bottom:48px;scroll-margin-top:56px}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:0;cursor:pointer;padding:14px 18px;background:var(--w);border-radius:12px;box-shadow:0 1px 5px rgba(0,0,0,.07);transition:background .15s}
+.sec-head:hover{background:var(--g1)}
+.sec-head.open{border-radius:12px 12px 0 0;margin-bottom:0}
+.sec-content{display:none;background:var(--w);border-radius:0 0 12px 12px;padding:20px 18px 24px;box-shadow:0 2px 5px rgba(0,0,0,.07);margin-bottom:0}
+.sec-content.open{display:block}
+.sec{margin-bottom:12px}
+.sec-chip{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;padding:3px 9px;border-radius:20px;white-space:nowrap}
+.sec-chip.purple{background:var(--pl);color:var(--p)}
+.sec-chip.green{background:var(--gl);color:var(--g)}
+.sec-chip.amber{background:var(--al);color:var(--a)}
+.sec-chip.dark{background:var(--d);color:#fff}
+.sec-title{font-size:19px;font-weight:700;color:var(--d)}
+.sec-rule{flex:1;height:2px;background:linear-gradient(90deg,var(--g3),transparent)}
+
+/* L6 CALLOUT */
+.signal{display:flex;border-radius:10px;overflow:hidden;margin-bottom:20px;box-shadow:0 1px 6px rgba(107,63,160,.12)}
+.signal-bar{width:5px;background:var(--p);flex-shrink:0}
+.signal-bar.g{background:var(--g)}
+.signal-body{background:var(--pl);padding:12px 16px;flex:1}
+.signal-body.g{background:var(--gl)}
+.signal-tag{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--p);margin-bottom:3px;display:block}
+.signal-tag.g{color:var(--g)}
+.signal-body p{font-size:13.5px;color:var(--g7);font-style:italic;line-height:1.6}
+
+/* LEADERSHIP CARDS */
+.lead-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;align-items:start}
+.lead-card{background:var(--w);border-radius:12px;padding:18px 20px;box-shadow:0 1px 5px rgba(0,0,0,.07)}
+.lead-card-head{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.lead-icon{font-size:20px;line-height:1}
+.lead-card-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--p)}
+.lead-card-title.g{color:var(--g)}
+.lead-card-title.a{color:var(--a)}
+.lead-card ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.lead-card ul li{font-size:13px;line-height:1.5;padding-left:16px;position:relative;color:var(--g7)}
+.lead-card ul li::before{content:"▸";position:absolute;left:0;color:var(--p);font-size:10px;top:2px}
+.lead-card.g ul li::before{color:var(--g)}
+.lead-card.a ul li::before{color:var(--a)}
+
+/* OBJ CARDS */
+.obj-card{background:var(--w);border-radius:12px;box-shadow:0 1px 5px rgba(0,0,0,.07);margin-bottom:12px;overflow:visible}
+.obj-card-head{padding:16px 20px;cursor:pointer;display:flex;align-items:flex-start;gap:16px;user-select:none;border-radius:12px}
+.obj-card-head:hover{background:var(--g1)}
+.obj-num{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--p);background:var(--pl);padding:3px 8px;border-radius:4px;white-space:nowrap;margin-top:2px}
+.obj-main{flex:1}
+.obj-title{font-size:15px;font-weight:700;color:var(--d);line-height:1.3;margin-bottom:4px}
+.obj-summary{font-size:13px;color:var(--g5);line-height:1.4}
+.obj-metrics{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.om{background:var(--gl);border:1px solid #A7D7B8;border-radius:20px;padding:2px 10px;font-size:12px;font-weight:700;color:var(--g)}
+.om.warn{background:var(--al);border-color:#D97706;color:var(--a)}
+.obj-toggle{font-size:18px;color:var(--g5);transition:.2s;flex-shrink:0;margin-top:2px}
+.obj-body{display:none;padding:0 20px 20px;border-top:1px solid var(--g3)}
+.obj-body.open{display:block}
+
+/* ROWS */
+.row-list{display:flex;flex-direction:column;gap:12px;margin-top:14px}
+.row{background:var(--g1);border-radius:8px;padding:14px 16px}
+.row-goal{font-size:11.5px;color:var(--g5);font-style:italic;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--g3)}
+.row ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.row ul li{font-size:13px;line-height:1.5;padding-left:16px;position:relative}
+.row ul li::before{content:"→";position:absolute;left:0;color:var(--p);font-size:11px;top:1px;font-weight:600}
+
+/* METRICS BAR */
+.m-bar{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-top:14px}
+.mb{background:var(--gl);border:1px solid #A7D7B8;border-radius:10px;padding:10px 14px;text-align:center}
+.mb-n{font-size:22px;font-weight:800;color:var(--g);line-height:1;margin-bottom:2px}
+.mb-l{font-size:10px;color:#2D6A4F;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+
+/* QUOTES */
+.quote-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:12px}
+.q{background:var(--w);border-radius:10px;padding:14px;border-left:3px solid var(--pm);box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.q blockquote{font-size:13px;font-style:italic;color:var(--g7);line-height:1.55;margin-bottom:8px}
+.q cite{font-size:11.5px;color:var(--g5);font-style:normal;font-weight:600}
+
+/* PODS */
+.pods{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin-top:10px}
+.pod{background:var(--w);border-radius:8px;padding:10px 12px;border:1px solid var(--g3)}
+.pod-name{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--p);margin-bottom:3px}
+.pod-proj{font-size:12.5px;color:var(--g7);line-height:1.45}
+
+/* SUMMARY */
+.summary{background:var(--w);border-radius:12px;padding:24px 28px;box-shadow:0 1px 5px rgba(0,0,0,.07)}
+.summary p{font-size:14.5px;line-height:1.75;color:var(--g7);margin-bottom:14px}
+.summary p:last-child{margin-bottom:0}
+.summary strong{color:var(--d);font-weight:600}
+
+/* CHECKIN */
+.ci{background:var(--w);border-radius:12px;padding:22px 26px;box-shadow:0 1px 5px rgba(0,0,0,.07);margin-bottom:12px}
+.ci-chip{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--p);background:var(--pl);padding:3px 8px;border-radius:4px;display:inline-block;margin-bottom:8px}
+.ci-q{font-size:15px;font-weight:700;color:var(--d);margin-bottom:14px;line-height:1.4}
+.ci-a{font-size:13.5px;color:var(--g7);line-height:1.7}
+.ci-a ul{list-style:none;display:flex;flex-direction:column;gap:7px;margin:8px 0}
+.ci-a ul li{padding-left:18px;position:relative}
+.ci-a ul li::before{content:"→";position:absolute;left:0;color:var(--p);font-weight:700;font-size:11px;top:2px}
+.ci-subhead{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--g5);margin-top:14px;margin-bottom:6px}
+.ci-placeholder{color:var(--g5);font-style:italic;background:var(--g1);padding:10px 14px;border-radius:6px;border:1px dashed var(--g3);font-size:13px}
+
+/* INFLIGHT BADGE */
+.inflight-head{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.inflight-pill{background:var(--gl);color:var(--g);border:1px solid #A7D7B8;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;padding:4px 10px;border-radius:20px}
+.inflight-date{font-size:12.5px;color:var(--g5);font-style:italic;margin-left:auto}
+
+.what-box{background:var(--g1);border:1px solid var(--g3);border-radius:8px;padding:12px 16px;font-size:13.5px;line-height:1.6;color:var(--g7);margin-bottom:18px}
+.what-box strong{color:var(--d);font-weight:600}
+
+/* CONTEXT PILL */
+.ctx{background:var(--al);border:1px solid #D97706;border-radius:8px;padding:12px 16px;font-size:13px;color:var(--a);margin-bottom:32px;line-height:1.55}
+.ctx strong{font-weight:700}
+
+/* DIVIDER */
+hr{border:none;height:1px;background:var(--g3);margin:8px 0 24px}
+
+/* LINKS */
+a{color:var(--p);text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px;font-weight:500}
+a:hover{text-decoration-style:solid}
+
+/* TOOLTIPS */
+[data-tip]{position:relative;cursor:default}
+[data-tip]::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--d);color:#fff;font-size:12px;font-style:normal;font-weight:400;line-height:1.5;padding:8px 12px;border-radius:8px;white-space:normal;width:220px;text-align:left;pointer-events:none;opacity:0;transition:opacity .15s;z-index:200;box-shadow:0 4px 14px rgba(0,0,0,.2);text-transform:none;letter-spacing:0}
+[data-tip]::before{content:"";position:absolute;bottom:calc(100% + 2px);left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--d);pointer-events:none;opacity:0;transition:opacity .15s;z-index:200}
+[data-tip]:hover::after,[data-tip]:hover::before{opacity:1}
+
+/* TOOLTIP DOWNWARD VARIANT */
+[data-tip].tip-below::after{bottom:auto;top:calc(100% + 8px)}
+[data-tip].tip-below::before{bottom:auto;top:calc(100% + 2px);border-top-color:transparent;border-bottom-color:var(--d)}
+
+/* TOOLTIP BADGE */
+.tip-i{display:inline-flex;align-items:center;justify-content:center;width:13px;height:13px;background:var(--pm);color:var(--p);border-radius:50%;font-size:8px;font-weight:800;font-style:italic;line-height:1;vertical-align:super;margin-left:3px;flex-shrink:0;pointer-events:none;font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0}
+
+/* BACK TO TOP */
+.top-btn{position:fixed;bottom:28px;right:28px;background:var(--p);color:#fff;border:none;border-radius:50%;width:40px;height:40px;font-size:18px;cursor:pointer;box-shadow:0 2px 12px rgba(107,63,160,.4);display:flex;align-items:center;justify-content:center;opacity:0;transition:.2s;z-index:99}
+.top-btn.show{opacity:1}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Sarah Mondestin · H1 2026</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap" style="padding-top:0;padding-bottom:0">
+    <p class="hero-eye">H1 2026 Achievement Summary</p>
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:6px">
+      <img src="sarah.jpg" alt="Sarah Mondestin" style="width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid rgba(255,255,255,.35);flex-shrink:0">
+      <h1 style="margin-bottom:0">Sarah Mondestin</h1>
+    </div>
+    <p class="hero-role">Content Design, Thumbtack &nbsp;·&nbsp; <span>L5 (Content Designer) → <a href="https://docs.google.com/spreadsheets/d/1Jq7X-PT8QtbdBGW-B81N8favlt3NkPdWbiItuBN0F6A/edit?gid=1478571231#gid=1478571231" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px">targeting L6 (Senior Content Designer)</a></span></p>
+    <div class="stats">
+      <a class="stat tip-below" href="#obj1" onclick="openObj('obj1')" data-tip="Rich query rate: 25% → 43% after Progressive Expression improvements across M1–M3. Richer customer descriptions = better match quality downstream."><div class="stat-n">+18pp</div><div class="stat-l">Rich Query Rate</div></a>
+      <a class="stat tip-below" href="#obj3" onclick="openObj('obj3')" data-tip="78% of Request Form questions are inferred from DQ answers by end of the flow (M3 data, 4/20–5/4). Customers arrive at match with their intent already captured."><div class="stat-n">78%</div><div class="stat-l">RF inferred (M3)</div></a>
+      <a class="stat tip-below" href="#obj3" onclick="openObj('obj3')" data-tip="DQ abandon rate dropped from 10.5% → 6% by M3 — a 4.5pp reduction, exceeding the 3pp goal. Driven by targeted prompt rewrites on low-performing touchpoints."><div class="stat-n">4.5pp</div><div class="stat-l">DQ abandon ↓</div></a>
+      <a class="stat tip-below" href="#obj2" onclick="openObj('obj2')" data-tip="Average quality score across all shipped prompt sets, evaluated via AI eval framework. Goal was 90% — finished 4pp above target."><div class="stat-n">94%</div><div class="stat-l">AI Eval quality (goal: 90%)</div></a>
+      <a class="stat tip-below" href="#obj3" onclick="openObj('obj3')" data-tip="Zero prompt-related launch blockers across Express, NHX, and NDFP all half."><div class="stat-n">0</div><div class="stat-l">Launch blockers</div></a>
+      <a class="stat tip-below" href="#obj4" onclick="openObj('obj4')" data-tip="Post-session satisfaction score across 27 Office Hours sessions. 15 out of 15 survey respondents said they would return."><div class="stat-n">95%</div><div class="stat-l">Office Hours satisfaction</div></a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:28px;margin-top:4px">
+    <a href="#leadership" style="background:var(--pl);color:var(--p);font-size:12.5px;font-weight:700;padding:7px 18px;border-radius:20px;text-decoration:none;letter-spacing:.02em;border:1.5px solid var(--pm)">Leadership</a>
+    <a href="#objs" style="background:var(--pl);color:var(--p);font-size:12.5px;font-weight:700;padding:7px 18px;border-radius:20px;text-decoration:none;letter-spacing:.02em;border:1.5px solid var(--pm)">Objectives</a>
+    <a href="#summary" style="background:var(--pl);color:var(--p);font-size:12.5px;font-weight:700;padding:7px 18px;border-radius:20px;text-decoration:none;letter-spacing:.02em;border:1.5px solid var(--pm)">H1 Summary</a>
+    <a href="#l6case" style="background:var(--p);color:#fff;font-size:12.5px;font-weight:700;padding:7px 18px;border-radius:20px;text-decoration:none;letter-spacing:.02em;border:1.5px solid var(--pd)">L6 Trajectory ⚡</a>
+    <a href="#built" style="background:var(--pl);color:var(--p);font-size:12.5px;font-weight:700;padding:7px 18px;border-radius:20px;text-decoration:none;letter-spacing:.02em;border:1.5px solid var(--pm)">What I Built</a>
+    <a href="#checkin" style="background:var(--pl);color:var(--p);font-size:12.5px;font-weight:700;padding:7px 18px;border-radius:20px;text-decoration:none;letter-spacing:.02em;border:1.5px solid var(--pm)">Self Check-Ins</a>
+    <a href="#peers" style="background:var(--pl);color:var(--p);font-size:12.5px;font-weight:700;padding:7px 18px;border-radius:20px;text-decoration:none;letter-spacing:.02em;border:1.5px solid var(--pm)">Peer Reviewers</a>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-bottom:32px">
+    <div class="ctx" style="margin-bottom:0">
+      <blockquote style="font-size:14px;font-style:italic;color:var(--a);line-height:1.65;margin-bottom:6px">"Sarah was phenomenal to work with — quickly digested the problem space and was very collaborative."</blockquote>
+      <cite style="font-size:12px;font-weight:700;font-style:normal;color:var(--a)">— Cailee Markosian, PMM</cite>
+    </div>
+    <div class="ctx" style="margin-bottom:0">
+      <blockquote style="font-size:14px;font-style:italic;color:var(--a);line-height:1.65;margin-bottom:6px">"She organized her feedback in a way that made it easy to act on quickly. She explains the rationale behind her suggestions — it helps me better understand her thinking and apply the feedback more effectively."</blockquote>
+      <cite style="font-size:12px;font-weight:700;font-style:normal;color:var(--a)">— Grace Cha, Product Designer</cite>
+    </div>
+  </div>
+
+  <!-- LEADERSHIP -->
+  <div class="sec" id="leadership">
+    <div class="sec-head" onclick="toggleSec(this)">
+      <span class="sec-chip purple">Leadership &amp; Influence</span>
+      <div class="sec-rule"></div>
+      <span class="obj-toggle" style="color:var(--g5);font-size:18px;flex-shrink:0">＋</span>
+    </div>
+    <div class="sec-content">
+    <div class="lead-grid">
+      <div class="lead-card">
+        <div class="lead-card-head" onclick="toggle(this)" style="cursor:pointer;justify-content:space-between">
+          <div style="display:flex;align-items:center;gap:8px"><span class="lead-icon">🤝</span><span class="lead-card-title">Cross-Functional</span></div>
+          <span class="obj-toggle">＋</span>
+        </div>
+        <div class="obj-body" style="padding:12px 4px 4px;border-top:none"><ul>
+          <li>Co-led <strong>NCX Info Alignment</strong> — prompt strategy owner and testing infrastructure builder, not just a contributor</li>
+          <li>Led <a href="https://docs.google.com/document/d/1zGRhHq1u3wF3Beu27uUjZO5k4hElbo_ta4XfptLseaU/edit?tab=t.0#heading=h.1pz80bhuao1s" target="_blank" rel="noopener"><strong>Predictive Text</strong></a> standups, keeping Eng, PM &amp; Data aligned throughout rollout</li>
+          <li>Self-injected onto <strong>Enchilada</strong> before it was staffed — V0 delivered on time, no blockers</li>
+          <li>Covered <strong>NDFP</strong> as the sole CD during an open headcount, while also owning <strong>Express</strong> content design — <a href="https://docs.google.com/document/d/18UAgEE3ZPlOSaw95QX0hy9Ig-KQkLrDy08a_soapOSQ/edit?tab=t.0#heading=h.pmgnbjdgb9tm" target="_blank" rel="noopener">NDFP copy feedback doc ↗</a></li>
+        </ul></div>
+      </div>
+
+      <div class="lead-card g">
+        <div class="lead-card-head" onclick="toggle(this)" style="cursor:pointer;justify-content:space-between">
+          <div style="display:flex;align-items:center;gap:8px"><span class="lead-icon">🤖</span><span class="lead-card-title g">AI Org Leadership</span></div>
+          <span class="obj-toggle">＋</span>
+        </div>
+        <div class="obj-body" style="padding:12px 4px 4px;border-top:none"><ul>
+          <li>Named <strong>AI Champion</strong> — designed the <strong>CD AI enablement plan</strong> and led biweekly AI build time sessions</li>
+          <li>Co-led the design AI build session at the <strong>company offsite</strong> with AI Champions and design leadership — <a href="https://docs.google.com/presentation/d/1HsNn_d2YYd8O9y5mwEIg8vO0rXrtiNyR_hHeFEpeslg/edit" target="_blank" rel="noopener">Design Day deck ↗</a></li>
+          <li>Co-led the design team's first project in <strong>Claude Design</strong> with Erin Hogan — <a href="https://claude.ai/design/p/019dcabf-3a1d-709e-ad8a-f247616bb25d" target="_blank" rel="noopener">prototype ↗</a>; presented at the offsite</li>
+          <li>Shared prompt rituals and AI-built ceremonies (Claude + OpenAI) directly with engineer partners — bridging content practice and technical tooling</li>
+        </ul></div>
+      </div>
+
+      <div class="lead-card a">
+        <div class="lead-card-head" onclick="toggle(this)" style="cursor:pointer;justify-content:space-between">
+          <div style="display:flex;align-items:center;gap:8px"><span class="lead-icon">🏗️</span><span class="lead-card-title a">Program &amp; Org Infrastructure</span></div>
+          <span class="obj-toggle">＋</span>
+        </div>
+        <div class="obj-body" style="padding:12px 4px 4px;border-top:none"><ul>
+          <li>Owns <strong>Office Hours</strong> end-to-end: structure, comms, data, feedback, and iteration — <a href="https://coda.io/d/Design-Home_dtlEln8sq8q/CD-office-hours-sign-up_suhzRphW#Sign-up-sheet_tuX6fS9f" target="_blank" rel="noopener">sign-up sheet ↗</a></li>
+          <li>Moved prompt crits upstream to every milestone — repurposed existing bug bashes, no new asks</li>
+          <li>Collaborated with my manager on the <strong>CMD pilot deck</strong> to introduce Content Model Design to the first pilot teams — <a href="https://docs.google.com/presentation/d/1YjWmI9u73Q63VH3pee68jro42SrUkTj56jXVyrLming/edit" target="_blank" rel="noopener">view deck ↗</a></li>
+          <li>Built AI tools now used across CD: ceremony skill, prompt tester, <a href="https://linear.app/thumbtack/initiative/llm-prompts-initiative-beta-a54cb3900552/overview" target="_blank" rel="noopener">Linear prompt ceremonies ↗</a>, and eval framework (in AI marketplace)</li>
+          <li>Served as <strong>onboarding buddy</strong> for the new NDFP content designer — shaped onboarding docs, met weekly, shared company context, prompt rituals, and AI tools</li>
+        </ul></div>
+      </div>
+    </div>
+    </div><!-- /sec-content -->
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="sec" id="summary">
+    <div class="sec-head" onclick="toggleSec(this)">
+      <span class="sec-chip purple">H1 in summary</span>
+      <div class="sec-rule"></div>
+      <span class="obj-toggle" style="color:var(--g5);font-size:18px;flex-shrink:0">＋</span>
+    </div>
+    <div class="sec-content">
+    <div class="summary">
+      <p>This half I expanded scope mid-stream, shipped zero-blocker launches across 7+ features, and exceeded every quality and coverage target. I co-led NCX Information Alignment as the prompt strategy owner, led Predictive Text standups, self-injected onto Enchilada before it was staffed, and covered NDFP as the sole CD during an open headcount while owning Express. DQ abandon rate dropped 4.5pp (exceeding the 3pp goal), answer rate hit 83%, and 78% of RF questions are now inferred at end of the DQ flow. <strong>The metrics moved because the content decisions were on target.</strong></p>
+      <p>The work I'm most proud of is the infrastructure I built and the programs I shaped. I reimagined Office Hours into a strategic program that surfaced real content needs across the company. I designed the CD AI enablement plan. I built the eval framework and prompt tools the team now uses. <strong>The throughline is the same: I see what's missing, I build it, and I make it available to everyone. That's the L6 trajectory. 💪🏽</strong></p>
+    </div>
+    </div><!-- /sec-content -->
+  </div>
+
+  <!-- OBJECTIVES -->
+  <div class="sec" id="objs">
+    <div class="sec-head" onclick="toggleSec(this)">
+      <span class="sec-chip dark">Objectives</span>
+      <div class="sec-rule"></div>
+      <span class="obj-toggle" style="color:var(--g5);font-size:18px;flex-shrink:0">＋</span>
+    </div>
+    <div class="sec-content">
+
+    <!-- OBJ 1 -->
+    <div class="obj-card" id="obj1">
+      <div class="obj-card-head" onclick="toggle(this)">
+        <span class="obj-num" data-tip="Obj 1: Deliver high-quality, intentional design work that meets Thumbtack's craft and quality standards.">Obj 1</span>
+        <div class="obj-main">
+          <div class="obj-title">Craft quality that moves product metrics</div>
+          <div class="obj-summary">7 surfaces shipped. Zero blockers. Moved the metrics that content can actually move.</div>
+          <div class="obj-metrics">
+            <span class="om">+18pp Rich Query Rate</span>
+            <span class="om">~50% Predictive Text usage</span>
+            <span class="om">+3% customer confidence</span>
+            <span class="om">7+ craft rituals</span>
+          </div>
+        </div>
+        <span class="obj-toggle">＋</span>
+      </div>
+      <div class="obj-body">
+        <div class="signal"><div class="signal-bar"></div><div class="signal-body"><span class="signal-tag">⚡ L6 signal</span><p>Absorbed NHX, NDFP, and Express mid-half without dropping quality or velocity. Owning this much surface area with zero launch blockers is L6 scope.</p></div></div>
+
+        <div style="background:var(--g1);border-radius:8px;padding:12px 16px;margin-bottom:16px">
+          <div style="font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--g5);margin-bottom:10px">Projects shipped H1 2026</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:6px">
+            <div data-tip="Shipped across M1, M2, and M3 — content improvements that help customers describe their needs more richly, improving match quality." style="background:var(--w);border:1px solid var(--g3);border-radius:6px;padding:7px 10px;font-size:12.5px;color:var(--g7)"><strong style="color:var(--d)">Progressive Expression</strong><br><span style="font-size:11px;color:var(--g5)">Express</span></div>
+            <div data-tip="AI-powered text suggestions that help customers complete their job descriptions faster. Reached ~50% adoption rate in H1." style="background:var(--w);border:1px solid var(--g3);border-radius:6px;padding:7px 10px;font-size:12.5px;color:var(--g7)"><strong style="color:var(--d)">Predictive Text</strong><br><span style="font-size:11px;color:var(--g5)">Prompt · Express</span><br><a href="https://docs.google.com/document/d/1zGRhHq1u3wF3Beu27uUjZO5k4hElbo_ta4XfptLseaU/edit?tab=t.0#heading=h.1pz80bhuao1s" target="_blank" rel="noopener" style="font-size:10.5px;font-weight:600;text-decoration:none;color:var(--p)">Prompt doc ↗</a></div>
+            <div data-tip="NHX initiative to improve early customer experience. Self-injected onto the project before it was formally staffed; delivered V0 on time with no blockers." style="background:var(--w);border:1px solid var(--g3);border-radius:6px;padding:7px 10px;font-size:12.5px;color:var(--g7)"><strong style="color:var(--d)">Enchilada V0</strong><br><span style="font-size:11px;color:var(--g5)">NHX</span></div>
+            <div data-tip="Enrollment flow and content for customers entering the new driver flow program, covering onboarding communications and setup." style="background:var(--w);border:1px solid var(--g3);border-radius:6px;padding:7px 10px;font-size:12.5px;color:var(--g7)"><strong style="color:var(--d)">NDFP Enrollment</strong><br><span style="font-size:11px;color:var(--g5)">NDFP</span></div>
+            <div data-tip="Customer-facing communications for the NDFP program, including transactional and lifecycle messaging." style="background:var(--w);border:1px solid var(--g3);border-radius:6px;padding:7px 10px;font-size:12.5px;color:var(--g7)"><strong style="color:var(--d)">NDFP Comms</strong><br><span style="font-size:11px;color:var(--g5)">NDFP</span></div>
+            <div data-tip="Content for customer preference settings around in-person, remote, and hybrid service options within the NDFP flow." style="background:var(--w);border:1px solid var(--g3);border-radius:6px;padding:7px 10px;font-size:12.5px;color:var(--g7)"><strong style="color:var(--d)">Hybrid Preferences</strong><br><span style="font-size:11px;color:var(--g5)">NDFP</span><br><a href="https://docs.google.com/document/d/18UAgEE3ZPlOSaw95QX0hy9Ig-KQkLrDy08a_soapOSQ/edit?tab=t.0#heading=h.pmgnbjdgb9tm" target="_blank" rel="noopener" style="font-size:10.5px;font-weight:600;text-decoration:none;color:var(--p)">Fast changes ↗</a></div>
+            <div data-tip="Welcome and setup experience for new participants in the NDFP program, helping them understand the flow and get started." style="background:var(--w);border:1px solid var(--g3);border-radius:6px;padding:7px 10px;font-size:12.5px;color:var(--g7)"><strong style="color:var(--d)">NDFP Onboarding</strong><br><span style="font-size:11px;color:var(--g5)">NDFP</span></div>
+            <div data-tip="LLM prompt that sequences and surfaces Dynamic Questions to reduce customer-pro mismatches. Iterated through 13+ versions with live testing across 30+ real service scenarios. Co-built Info Alignment prototype in Claude Design with Erin Hogan." style="background:var(--w);border:1px solid var(--g3);border-radius:6px;padding:7px 10px;font-size:12.5px;color:var(--g7);border-color:var(--pm)"><strong style="color:var(--d)">Info Alignment DQ Prompt</strong><br><span style="font-size:11px;color:var(--p);font-weight:600">Prompt · NCX &nbsp;·&nbsp; </span><span style="font-size:11px;color:var(--a);font-weight:600">Ships June 5</span><br><a href="https://docs.google.com/document/d/1V7MLCAYQgTezAaK-zbFA0tSvSCcqGLufV2HDXP2kVKA/edit?tab=t.hy2fe0cklzis#heading=h.s4lyew6tiaph" target="_blank" rel="noopener" style="font-size:10.5px;font-weight:600;text-decoration:none;color:var(--p)">V1 proposal ↗</a> &nbsp;<a href="https://claude.ai/design/p/019dcabf-3a1d-709e-ad8a-f247616bb25d" target="_blank" rel="noopener" style="font-size:10.5px;font-weight:600;text-decoration:none;color:var(--p)">Prototype ↗</a></div>
+          </div>
+
+        </div>
+
+        <div class="row-list">
+          <div class="row">
+            <div class="row-goal">Goal: Increase expression submit rate (baseline 78%) by 5–8%</div>
+            <ul>
+              <li>Shipped improvements across all M1–M3 milestones for Progressive Expression</li>
+              <li>Rich Query Rate: 25% → 43% <strong>(+18pp)</strong> — <a href="https://docs.google.com/presentation/d/1G7krkdqenqYqIbjFwAd_2ocr2nRIhGn5S863HiJ7rKI/edit" target="_blank" rel="noopener">NCX M3 results ↗</a></li>
+              <li>Led <a href="https://docs.google.com/document/d/1zGRhHq1u3wF3Beu27uUjZO5k4hElbo_ta4XfptLseaU/edit?tab=t.0#heading=h.1pz80bhuao1s" target="_blank" rel="noopener">Predictive Text</a> standups + XFN alignment; adoption reached <strong>~50%</strong></li>
+              <li>M2 customer confidence: 82% → 85% <strong>(+3%)</strong></li>
+              <li>Submit rate flat (~77%) — metric is driven by pricing/supply, not content alone</li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="row-goal">Goal: Maintain or improve craft quality</div>
+            <ul>
+              <li>Proposed moving crits upstream to every milestone — changed how the team catches issues</li>
+              <li>Repurposed bug bashes as prompt crits — no new time asks, just better use of existing blocks</li>
+              <li>Shipped <strong>7+ craft rituals</strong> (goal: ≥5)</li>
+              <li>Polish checkpoints now used as a standard across pods</li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="row-goal">Goal: Complete 5 AI-assisted content initiatives</div>
+            <ul>
+              <li>Completed 5+ including Claude ceremony skill, CMD deck, eval framework, Enchilada V0, Claude designs for Info Alignment, and Express prompt sets</li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="row-goal">In-flight · <a href="https://docs.google.com/document/d/1V7MLCAYQgTezAaK-zbFA0tSvSCcqGLufV2HDXP2kVKA/edit?tab=t.hy2fe0cklzis#heading=h.s4lyew6tiaph" target="_blank" rel="noopener">NCX Information Alignment</a> — craft &amp; content system (targeting June 5)</div>
+            <ul>
+              <li>Co-leading with Erin Hogan (Design), Katie Zhu (PM), Jesse Stauffer (Eng), and Megan Kelly (Data) — prompt strategy owner</li>
+              <li>Defined DQ question ordering framework (skill fit → scope → logistics → preferences → budget → scheduling) — adopted across V1</li>
+              <li>Authored content framework for education banners, social proof signals, and personalization signals — defined rules for when each type surfaces</li>
+              <li>Worked with Eng on sanitization requirements and schema flags</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OBJ 2 -->
+    <div class="obj-card" id="obj2">
+      <div class="obj-card-head" onclick="toggle(this)">
+        <span class="obj-num" data-tip="Obj 2: Use prototyping and AI tools to accelerate learning and alignment.">Obj 2</span>
+        <div class="obj-main">
+          <div class="obj-title">Build AI fluency and scalable prompt practices</div>
+          <div class="obj-summary">Built the tools and programs others now use. Led the AI cultural shift for CD.</div>
+          <div class="obj-metrics">
+            <span class="om">94% AI eval quality</span>
+            <span class="om">Eval framework in AI marketplace</span>
+            <span class="om">Biweekly AI build time</span>
+          </div>
+        </div>
+        <span class="obj-toggle">＋</span>
+      </div>
+      <div class="obj-body">
+        <div class="signal"><div class="signal-bar"></div><div class="signal-body"><span class="signal-tag">⚡ L6 signal</span><p>Designed a cross-functional AI enablement structure for the department. Built infrastructure others use, led the design team's first Claude Design project, and presented at the offsite. This is what moving the org looks like.</p></div></div>
+        <div class="row-list">
+          <div class="row">
+            <div class="row-goal">Goal: Lead or contribute to an LLM eval framework</div>
+            <ul>
+              <li>Piloted eval framework for measuring prompt quality — now in the <strong>org-wide AI tools marketplace</strong></li>
+              <li>Completed company-wide <strong>30-Day AI Explorer program</strong> and a <strong>full-day AI Champions workshop</strong> to build technical depth</li>
+              <li>Led AI Champions workshop; presented CD's Claude Design experience at the company offsite</li>
+              <li>Co-led the <strong>design AI build session at the company offsite</strong> — planned with AI Champions + design leadership — <a href="https://docs.google.com/presentation/d/1HsNn_d2YYd8O9y5mwEIg8vO0rXrtiNyR_hHeFEpeslg/edit" target="_blank" rel="noopener">Design Day deck ↗</a></li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="row-goal">Goal: Run prompt iteration cycles with measurable quality</div>
+            <ul>
+              <li>Ran full iteration cycles (crit → swarm → bug bash) across Express, NHX, and NDFP</li>
+              <li>Caught issues pre-launch vs. post-launch — all prompt sets shipped on schedule</li>
+              <li><strong>NCX Info Alignment:</strong> Iterated DQ prompt through <strong>13+ versions</strong> — every change documented with rationale; built a <a href="v13_dq_tester.html" target="_blank" rel="noopener">custom HTML testing environment</a> with 30+ real service scenarios so the team can test without eng support (supports multi-variant testing, feature flags, flag-and-log feedback, and mobile layout)</li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="row-goal">Goal: ≥90% on automated content quality evaluations</div>
+            <ul>
+              <li>Achieved <strong>94%</strong> average quality rating — exceeded 90% target by 4pp</li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="row-goal">Goal: Create reusable AI content artifacts or tools</div>
+            <ul>
+              <li>Claude + Linear ceremony skill — automates the full prompt ceremony setup for the CD team</li>
+              <li>Claude + OpenAI prompt tester — tests prompts against collected bugs, rewrites automatically</li>
+              <li>Collaborated with my manager on the CMD pilot deck to introduce Content Model Design to the first pilot teams</li>
+              <li><strong>Named AI Champion</strong>; designed + led biweekly AI build time sessions (sharing + quiet build)</li>
+              <li>Created the CD AI Champions enablement plan; presented at the company offsite</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OBJ 3 -->
+    <div class="obj-card" id="obj3">
+      <div class="obj-card-head" onclick="toggle(this)">
+        <span class="obj-num" data-tip="Obj 3: Lead prompt quality and readiness for Express + NHX.">Obj 3</span>
+        <div class="obj-main">
+          <div class="obj-title">Own prompt launch readiness across NHX and Express</div>
+          <div class="obj-summary">Zero prompt launch blockers across two product areas. Stepped up when coverage was needed.</div>
+          <div class="obj-metrics">
+            <span class="om">78% RF inferred</span>
+            <span class="om">83% DQ answer rate</span>
+            <span class="om">94% AI eval quality</span>
+            <span class="om">4.5pp DQ abandon ↓</span>
+            <span class="om">0 launch blockers</span>
+          </div>
+        </div>
+        <span class="obj-toggle">＋</span>
+      </div>
+      <div class="obj-body">
+        <div class="signal"><div class="signal-bar"></div><div class="signal-body"><span class="signal-tag">⚡ L6 signal</span><p>Covered NDFP as the sole CD during an open headcount while owning Express. Self-injected onto Enchilada before it was staffed. Ownership, not assignment.</p></div></div>
+        <div class="row-list">
+          <div class="row">
+            <div class="row-goal">Goal: ≥90% quality on shipped prompt sets</div>
+            <ul><li>94% average — 4pp above target</li></ul>
+          </div>
+          <div class="row">
+            <div class="row-goal">Goal: Reduce DQ drop-off by 3pp</div>
+            <ul>
+              <li>Abandon rate: 10.5% → <strong>6% by M3</strong> — <strong>4.5pp reduction</strong>, exceeding the 3pp goal — <a href="https://docs.google.com/document/d/17HmPacZkKbb3LelnxJPqmgIY6UHdWu_4YDfGnwR09HQ/edit?tab=t.0#heading=h.1etiu9o3btl3" target="_blank" rel="noopener">Alex Huang's M3 analysis ↗</a></li>
+              <li>DQs have <strong>83% answer rate</strong>, 11% skip, 6% abandon — <strong>94% response rate</strong> (answer + skip); top skip drivers are "none of the above" question types, directly addressed by Info Alignment's new "I'm Flexible" and "None of the above" options</li>
+              <li>For the questions that matter most: DQs mapped to <strong>required RF questions hit 90% answer rate</strong> — the prompt is working best exactly where match quality depends on it</li>
+              <li>Driven by targeted rewrites on low-performing DQ touchpoints (problem_diagnosis, specifications, scope_and_quantity types had lowest answer rates)</li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="row-goal">Goal: Reach 40% RF coverage by end of H1</div>
+            <ul>
+              <li>DQ coverage reached <strong>51%</strong> — 11pp above target. Zero prompt launch blockers all half.</li>
+              <li><strong>78% of applicable RF questions are inferred</strong> at end of DQ flow (M3 data) — meaning customers arrive at match with the large majority of intent signals already captured; the remaining 22% is split: 12% never asked (DQ gap), 9% asked but not answered, 1% asked-answered-but-not-inferred — <a href="https://docs.google.com/document/d/17HmPacZkKbb3LelnxJPqmgIY6UHdWu_4YDfGnwR09HQ/edit?tab=t.q84p7wvmrbzs#heading=h.voece31i67er" target="_blank" rel="noopener">RF coverage analysis ↗</a></li>
+              <li>Scale context: top categories by volume are House Cleaning, Handyman, and others with very high request volume — even a 1% answer rate improvement in these categories has a disproportionate downstream effect on match quality across the platform</li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="row-goal">Goal: Establish post-launch iteration system</div>
+            <ul>
+              <li>Ship → monitor → iterate cycle established; content performance tracking tied to DQ + submit rate signals</li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="row-goal">In-flight · NCX Information Alignment — launch readiness (targeting June 5)</div>
+            <ul>
+              <li>Co-leading V1 across Design, PM, Eng, and Data — on track for June 5 with no prompt blockers</li>
+              <li>Led live testing sessions; iterated in real time based on results</li>
+              <li>V2 (structural UX changes) scoped and handed off to H2</li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="row-goal">Goal: Deliver Enchilada V0 on time</div>
+            <ul>
+              <li><strong>Self-injected</strong> before it was formally staffed — saw content needed a voice early</li>
+              <li>Contributed to brief + RFC, built V0 with Waqas and team, ran testing, hosted XFN handoff</li>
+              <li>On schedule, no blockers</li>
+            </ul>
+          </div>
+        </div>
+        <div class="m-bar">
+          <div class="mb"><div class="mb-n">83%</div><div class="mb-l">DQ answer rate</div></div>
+          <div class="mb"><div class="mb-n">78%</div><div class="mb-l">RF inferred (M3)</div></div>
+          <div class="mb"><div class="mb-n">94%</div><div class="mb-l">AI Eval quality</div></div>
+          <div class="mb"><div class="mb-n">4.5pp</div><div class="mb-l">DQ abandon ↓</div></div>
+          <div class="mb"><div class="mb-n">0</div><div class="mb-l">Launch blockers</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OBJ 4 -->
+    <div class="obj-card" id="obj4">
+      <div class="obj-card-head" onclick="toggle(this)">
+        <span class="obj-num" data-tip="Obj 4: Scale CD Office Hours to raise craft standards and inform resourcing.">Obj 4</span>
+        <div class="obj-main">
+          <div class="obj-title">Scale content expertise through Office Hours</div>
+          <div class="obj-summary">27 sessions. 9 pods. Overall rating: 4.73/5. Revamped and managed the whole program.</div>
+          <div class="obj-metrics">
+            <span class="om">4.73 / 5 rating</span>
+            <span class="om">15/15 would return</span>
+            <span class="om">9+ pods served</span>
+          </div>
+        </div>
+        <span class="obj-toggle">＋</span>
+      </div>
+      <div class="obj-body">
+        <div class="signal"><div class="signal-bar"></div><div class="signal-body"><span class="signal-tag">⚡ L6 signal</span><p>Reimagined Office Hours as a strategic program that surfaced company-wide content needs and tracked performance through data. Owned structure, comms, feedback analysis, and iteration. A 95% satisfaction score and 15/15 saying they'd return reflects the quality of that redesign.</p></div></div>
+        <div class="row-list">
+          <div class="row">
+            <div class="row-goal">Goal: Run Office Hours and track engagement</div>
+            <ul>
+              <li>Owns structure, comms, data collection, feedback analysis, and iteration for all 27 sessions — <a href="https://coda.io/d/Design-Home_dtlEln8sq8q/CD-office-hours-sign-up_suhzRphW#Sign-up-sheet_tuX6fS9f" target="_blank" rel="noopener">sign-up sheet ↗</a> · <a href="https://docs.google.com/document/d/1jXNEknDy3Y20f8GDQq5hTyiXd_1FRgArQf4IiF6ZJ2g/edit?tab=t.0" target="_blank" rel="noopener" style="white-space:nowrap">program guide ↗</a></li>
+              <li>Added a second weekly slot after demand exceeded capacity — slots booking 3–4 weeks out</li>
+              <li>Built automated post-session Slack messages + follow-up reminders, including a <a href="https://docs.google.com/forms/d/e/1FAIpQLScEUxrQxR70RK-_sMoqeL-06fjdz2l8zEvwWAARH1bfe5z1JQ/viewform" target="_blank" rel="noopener">post-session feedback survey ↗</a></li>
+              <li>Analyzes feedback each cycle; adjusts program based on data</li>
+              <li>Coverage scheduled through August to protect continuity during med leave</li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="row-goal">Projects covered in Office Hours</div>
+            <div class="pods" style="margin-top:8px">
+              <div class="pod"><div class="pod-name">Match</div><div class="pod-proj">Value prop content moments; Tasks Module for Home</div></div>
+              <div class="pod"><div class="pod-name">TSPay</div><div class="pod-proj">Email copy</div></div>
+              <div class="pod"><div class="pod-name">Pro Experience</div><div class="pod-proj">Pro experience reviews; Personalized Profile Coaching</div></div>
+              <div class="pod"><div class="pod-name">CatMan / More Supply</div><div class="pod-proj">RF change transactional comms; Refunds for New Pros; Lead Launch</div></div>
+              <div class="pod"><div class="pod-name">Avoca</div><div class="pod-proj">AI Front Desk onboarding; FD+ · CommStrat</div></div>
+              <div class="pod"><div class="pod-name">Intermediation / DaRe</div><div class="pod-proj">Disintermediation + refund emails; timing expectation setting; ABC close module</div></div>
+              <div class="pod"><div class="pod-name">Express / NCX</div><div class="pod-proj">Making it Easier to Get Started ×2</div></div>
+              <div class="pod"><div class="pod-name">Core ELG</div><div class="pod-proj">App upsell + value prop; TTOD Survey flow</div></div>
+              <div class="pod"><div class="pod-name">Design</div><div class="pod-proj">Home tab content direction; PCC V2</div></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="row-goal">Feedback (Sarah's sessions only)</div>
+            <div style="font-size:13px;font-weight:700;color:var(--d);margin-bottom:10px">4.73 / 5 &nbsp;·&nbsp; 11 five-star &nbsp;·&nbsp; 15/15 would return</div>
+            <div class="quote-row">
+              <div class="q"><blockquote>"Phenomenal to work with — quickly digested the problem space and was very collaborative."</blockquote><cite>Cailee Markosian, PMM</cite></div>
+              <div class="q"><blockquote>"Amazing insights. Has been a great partner on our project."</blockquote><cite>Megan Kelly, Sr. CommStrat Mgr</cite></div>
+              <div class="q"><blockquote>"Talked aloud so we could follow her thought process — so helpful."</blockquote><cite>Pam Lin, Product Designer</cite></div>
+              <div class="q"><blockquote>"Already read up on the project beforehand — made the session really efficient."</blockquote><cite>Seth Hirsh, Applied Scientist</cite></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="row-goal">Onboarding support</div>
+            <ul>
+              <li>Served as onboarding buddy for the new NDFP content designer — shaped her onboarding docs, met weekly, shared company context, prompt rituals, AI tools, and CD craft practices</li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="row-goal">Goal: Publish an Office Hours blog post</div>
+            <ul>
+              <li>Not drafted; deprioritized due to CD restructuring into Content Model Design — carrying to H2</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OBJ 5 -->
+    <div class="obj-card">
+      <div class="obj-card-head" onclick="toggle(this)">
+        <span class="obj-num" data-tip="Obj 5: Create a repeatable onboarding and partnership model that helps teams engage Content Design effectively.">Obj 5</span>
+        <div class="obj-main">
+          <div class="obj-title">Build cross-functional content design infrastructure</div>
+          <div class="obj-summary">Collaborated with my manager on the deck that introduced Content Model Design to the org. Set the standard for how CD onboards XFN partners.</div>
+        </div>
+        <span class="obj-toggle">＋</span>
+      </div>
+      <div class="obj-body">
+        <div class="signal"><div class="signal-bar"></div><div class="signal-body"><span class="signal-tag">⚡ L6 signal</span><p>Collaborated with my manager on the CMD pilot deck to introduce Content Model Design to the first pilot teams — shaping how the org understands content's role going forward.</p></div></div>
+        <div class="row-list">
+          <div class="row">
+            <div class="row-goal">Goal: Create a guide for working with Content Design</div>
+            <ul>
+              <li>Created the Partnering with CD guide; not adopted due to CD restructuring into Content Model Design</li>
+              <li>Collaborated with my manager on the <a href="https://docs.google.com/presentation/d/1YjWmI9u73Q63VH3pee68jro42SrUkTj56jXVyrLming/edit" target="_blank" rel="noopener">CMD pilot deck</a> — captured the new framing in a form the team could use</li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="row-goal">Goal: Develop onboarding content for new CD partners</div>
+            <ul>
+              <li>Built onboarding content model drawing from Office Hours patterns</li>
+              <li>Delivered onboarding sessions for new NHX and NDFP pod members</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div><!-- /sec-content -->
+  </div>
+
+  <!-- WHY L6 -->
+  <div class="sec" id="l6case">
+    <div class="sec-head" onclick="toggleSec(this)">
+      <span class="sec-chip purple">L6 Trajectory</span>
+      <div class="sec-rule"></div>
+      <span class="obj-toggle" style="color:var(--g5);font-size:18px;flex-shrink:0">＋</span>
+    </div>
+    <div class="sec-content">
+
+    <div style="background:var(--w);border-radius:12px;padding:24px 28px;box-shadow:0 1px 5px rgba(0,0,0,.07)">
+      <p style="font-size:13.5px;color:var(--g5);font-style:italic;margin-bottom:20px;line-height:1.6">L5 → L6 is the shift from <strong style="color:var(--d);font-style:normal">executing well within a defined scope</strong> to <strong style="color:var(--d);font-style:normal">shaping scope, building systems, and moving the org</strong>. Here's where the work this half reflects that shift.</p>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+
+        <div style="background:var(--pl);border-radius:10px;border-left:4px solid var(--p);overflow:hidden">
+          <div onclick="toggle(this)" style="cursor:pointer;display:flex;gap:14px;align-items:center;padding:14px 16px;justify-content:space-between">
+            <div style="display:flex;gap:14px;align-items:center"><span style="font-size:20px;flex-shrink:0">🏗️</span><div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--p)">Built infrastructure others now use</div></div>
+            <span class="obj-toggle" style="color:var(--p);flex-shrink:0">＋</span>
+          </div>
+          <div class="obj-body" style="padding:0 16px 14px;border-top:none">
+            <p style="font-size:13px;color:var(--g7);line-height:1.55">Eval framework in the org-wide AI marketplace. Claude + Linear ceremony skill. Claude + OpenAI prompt tester. A testing environment with 30+ real service scenarios the team runs without eng support. These weren't assigned — they were gaps I identified and filled.</p>
+          </div>
+        </div>
+
+        <div style="background:var(--pl);border-radius:10px;border-left:4px solid var(--p);overflow:hidden">
+          <div onclick="toggle(this)" style="cursor:pointer;display:flex;gap:14px;align-items:center;padding:14px 16px;justify-content:space-between">
+            <div style="display:flex;gap:14px;align-items:center"><span style="font-size:20px;flex-shrink:0">🌐</span><div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--p)">Org-spanning scope, not pod-level</div></div>
+            <span class="obj-toggle" style="color:var(--p);flex-shrink:0">＋</span>
+          </div>
+          <div class="obj-body" style="padding:0 16px 14px;border-top:none">
+            <p style="font-size:13px;color:var(--g7);line-height:1.55">Covered 8 projects across Express, NHX, and NDFP in a single half. Co-led a cross-functional NCX initiative alongside Design, PM, Eng, and Data as the prompt strategy owner — not a contributor. L5 owns a surface. L6 owns a problem across surfaces.</p>
+          </div>
+        </div>
+
+        <div style="background:var(--pl);border-radius:10px;border-left:4px solid var(--p);overflow:hidden">
+          <div onclick="toggle(this)" style="cursor:pointer;display:flex;gap:14px;align-items:center;padding:14px 16px;justify-content:space-between">
+            <div style="display:flex;gap:14px;align-items:center"><span style="font-size:20px;flex-shrink:0">🤖</span><div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--p)">Moved the org on AI</div></div>
+            <span class="obj-toggle" style="color:var(--p);flex-shrink:0">＋</span>
+          </div>
+          <div class="obj-body" style="padding:0 16px 14px;border-top:none">
+            <p style="font-size:13px;color:var(--g7);line-height:1.55">Designed and ran the CD AI Champions enablement plan. Led the design team's first Claude Design project. Co-led the AI build session at the company offsite. Moved AI from something individuals explore to something the team does together, with structure and accountability.</p>
+          </div>
+        </div>
+
+        <div style="background:var(--pl);border-radius:10px;border-left:4px solid var(--p);overflow:hidden">
+          <div onclick="toggle(this)" style="cursor:pointer;display:flex;gap:14px;align-items:center;padding:14px 16px;justify-content:space-between">
+            <div style="display:flex;gap:14px;align-items:center"><span style="font-size:20px;flex-shrink:0">📐</span><div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--p)">Changed how teams work</div></div>
+            <span class="obj-toggle" style="color:var(--p);flex-shrink:0">＋</span>
+          </div>
+          <div class="obj-body" style="padding:0 16px 14px;border-top:none">
+            <p style="font-size:13px;color:var(--g7);line-height:1.55">Proposed moving prompt crits upstream to every milestone — repurposed existing bug bashes, no new time asks. Reimagined Office Hours from ad hoc sessions into a strategic program that surfaces company-wide content needs with data behind it. L6 shapes process, not just output.</p>
+          </div>
+        </div>
+
+        <div style="background:var(--pl);border-radius:10px;border-left:4px solid var(--p);overflow:hidden">
+          <div onclick="toggle(this)" style="cursor:pointer;display:flex;gap:14px;align-items:center;padding:14px 16px;justify-content:space-between">
+            <div style="display:flex;gap:14px;align-items:center"><span style="font-size:20px;flex-shrink:0">📊</span><div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--p)">Quality and scope at the same time</div></div>
+            <span class="obj-toggle" style="color:var(--p);flex-shrink:0">＋</span>
+          </div>
+          <div class="obj-body" style="padding:0 16px 14px;border-top:none">
+            <p style="font-size:13px;color:var(--g7);line-height:1.55">94% AI eval quality (goal: 90%). 51% RF coverage (goal: 40%). 7+ craft rituals (goal: 5). Zero launch blockers. All while absorbing expanded scope mid-half and covering NDFP through an open headcount. L6 doesn't trade quality for capacity — it holds both.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    </div><!-- /sec-content -->
+  </div>
+
+  <!-- WHAT I BUILT -->
+  <div class="sec" id="built">
+    <div class="sec-head" onclick="toggleSec(this)">
+      <span class="sec-chip purple">What I Built</span>
+      <div class="sec-rule"></div>
+      <span class="obj-toggle" style="color:var(--g5);font-size:18px;flex-shrink:0">＋</span>
+    </div>
+    <div class="sec-content">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px">
+
+      <a href="https://docs.google.com/document/d/1DF0Y_VQ2n3t9jw4vieEMJA2_uAEzMgpnsG0TSRD1v3c/edit?tab=t.0#heading=h.80efevida98y" target="_blank" rel="noopener" style="background:var(--w);border-radius:12px;padding:20px 22px;box-shadow:0 1px 5px rgba(0,0,0,.07);text-decoration:none;display:flex;flex-direction:column;gap:8px;transition:box-shadow .15s,transform .15s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 16px rgba(107,63,160,.15)'" onmouseout="this.style.transform='';this.style.boxShadow='0 1px 5px rgba(0,0,0,.07)'">
+        <div style="font-size:20px">📋</div>
+        <div style="font-size:14px;font-weight:700;color:var(--d);line-height:1.3">AI Enablement Plan</div>
+        <div style="font-size:12px;color:var(--g5)">Content Model Design</div>
+        <div style="font-size:11px;font-weight:600;color:var(--p);margin-top:auto">View doc ↗</div>
+      </a>
+
+      <a href="https://smondestin214.github.io/prompt-ceremony-tracker1/" target="_blank" rel="noopener" style="background:var(--w);border-radius:12px;padding:20px 22px;box-shadow:0 1px 5px rgba(0,0,0,.07);text-decoration:none;display:flex;flex-direction:column;gap:8px;transition:box-shadow .15s,transform .15s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 16px rgba(107,63,160,.15)'" onmouseout="this.style.transform='';this.style.boxShadow='0 1px 5px rgba(0,0,0,.07)'">
+        <div style="font-size:20px">🔬</div>
+        <div style="font-size:14px;font-weight:700;color:var(--d);line-height:1.3">Prompt Ceremony Tracker</div>
+        <div style="font-size:12px;color:var(--g5)">Prompt quality tracking tool</div>
+        <div style="font-size:11px;font-weight:600;color:var(--p);margin-top:auto">Open tool ↗</div>
+      </a>
+
+      <a href="https://claude.ai/design/p/019dcabf-3a1d-709e-ad8a-f247616bb25d?file=CD+Playground+Standalone.html" target="_blank" rel="noopener" style="background:var(--w);border-radius:12px;padding:20px 22px;box-shadow:0 1px 5px rgba(0,0,0,.07);text-decoration:none;display:flex;flex-direction:column;gap:8px;transition:box-shadow .15s,transform .15s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 16px rgba(107,63,160,.15)'" onmouseout="this.style.transform='';this.style.boxShadow='0 1px 5px rgba(0,0,0,.07)'">
+        <div style="font-size:20px">🎨</div>
+        <div style="font-size:14px;font-weight:700;color:var(--d);line-height:1.3">Info Alignment Prototype</div>
+        <div style="font-size:12px;color:var(--g5)">Built in Claude Design with Erin Hogan</div>
+        <div style="font-size:11px;font-weight:600;color:var(--p);margin-top:auto">View prototype ↗</div>
+      </a>
+
+      <a href="https://docs.google.com/presentation/d/1YjWmI9u73Q63VH3pee68jro42SrUkTj56jXVyrLming/edit?slide=id.g3d1ea676f75_0_873#slide=id.g3d1ea676f75_0_873" target="_blank" rel="noopener" style="background:var(--w);border-radius:12px;padding:20px 22px;box-shadow:0 1px 5px rgba(0,0,0,.07);text-decoration:none;display:flex;flex-direction:column;gap:8px;transition:box-shadow .15s,transform .15s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 16px rgba(107,63,160,.15)'" onmouseout="this.style.transform='';this.style.boxShadow='0 1px 5px rgba(0,0,0,.07)'">
+        <div style="font-size:20px">🏗️</div>
+        <div style="font-size:14px;font-weight:700;color:var(--d);line-height:1.3">CMD Pilot Deck</div>
+        <div style="font-size:12px;color:var(--g5)">Introduced Content Model Design to first pilot teams</div>
+        <div style="font-size:11px;font-weight:600;color:var(--p);margin-top:auto">View deck ↗</div>
+      </a>
+
+      <a href="https://linear.app/thumbtack/team/CD/all" target="_blank" rel="noopener" style="background:var(--w);border-radius:12px;padding:20px 22px;box-shadow:0 1px 5px rgba(0,0,0,.07);text-decoration:none;display:flex;flex-direction:column;gap:8px;transition:box-shadow .15s,transform .15s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 16px rgba(107,63,160,.15)'" onmouseout="this.style.transform='';this.style.boxShadow='0 1px 5px rgba(0,0,0,.07)'">
+        <div style="font-size:20px">⚡</div>
+        <div style="font-size:14px;font-weight:700;color:var(--d);line-height:1.3">Claude + Linear Ceremony Skill</div>
+        <div style="font-size:12px;color:var(--g5)">Automates prompt ceremony tracking issues in Linear</div>
+        <div style="font-size:11px;font-weight:600;color:var(--p);margin-top:auto">View in Linear ↗</div>
+      </a>
+
+    </div>
+    </div><!-- /sec-content -->
+  </div>
+
+  <!-- CHECK-IN -->
+  <div class="sec" id="checkin">
+    <div class="sec-head" onclick="toggleSec(this)">
+      <span class="sec-chip dark">Self Check-In Prompts</span>
+      <div class="sec-rule"></div>
+      <span class="obj-toggle" style="color:var(--g5);font-size:18px;flex-shrink:0">＋</span>
+    </div>
+    <div class="sec-content">
+
+    <!-- BetterWorks / Medical Leave Notice -->
+    <div style="background:var(--al);border:1.5px solid #F59E0B;border-radius:12px;padding:18px 22px;margin-bottom:22px">
+      <div style="display:flex;align-items:flex-start;gap:12px">
+        <span style="font-size:22px;line-height:1;flex-shrink:0;margin-top:1px">🏥</span>
+        <div>
+          <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--a);margin-bottom:6px">Medical Leave Notice: For Reviewers</div>
+          <p style="font-size:13.5px;color:#78350F;line-height:1.65;margin:0 0 12px">On medical leave <strong>June 10 – July 22</strong>. This page is my H1 close-out record. Nothing formal is due until mid-July — July check-in responses are pre-filled below. H2 goals are being set with my new team, DARE; some may be finalized by my PM and team while I'm out.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <a href="https://thumbtack.haystack.so/resources/b37a8ec5-16aa-4a66-a83b-91e8c37d1aea" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:var(--a);background:#FEF9C3;border:1px solid #F59E0B;border-radius:6px;padding:5px 12px;text-decoration:none">Last year's July prompts ↗</a>
+            <span style="font-size:12px;color:#92400E;background:rgba(0,0,0,.05);border-radius:6px;padding:5px 12px">Returning July 22</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center">
+      <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--g5)">Manager H1 check-in sessions</span>
+      <span style="font-size:12px;color:var(--g7);background:var(--g1);border:1px solid var(--g3);border-radius:20px;padding:2px 10px">Mar 20</span>
+      <span style="font-size:12px;color:var(--g7);background:var(--g1);border:1px solid var(--g3);border-radius:20px;padding:2px 10px">Apr 14</span>
+      <span style="font-size:12px;color:var(--g7);background:var(--g1);border:1px solid var(--g3);border-radius:20px;padding:2px 10px">Apr 21</span>
+      <span style="font-size:12px;color:var(--g7);background:var(--g1);border:1px solid var(--g3);border-radius:20px;padding:2px 10px">Apr 28</span>
+      <span style="font-size:12px;color:var(--g7);background:var(--g1);border:1px solid var(--g3);border-radius:20px;padding:2px 10px">May 12</span>
+      <span style="font-size:12px;color:var(--g7);background:var(--g1);border:1px solid var(--g3);border-radius:20px;padding:2px 10px">May 22</span>
+      <span style="font-size:12px;color:var(--g7);background:var(--g1);border:1px solid var(--g3);border-radius:20px;padding:2px 10px">Jun 4</span>
+    </div>
+
+    <!-- MANAGER FEEDBACK -->
+    <div style="background:var(--w);border-radius:12px;padding:22px 26px;box-shadow:0 1px 5px rgba(0,0,0,.07);margin-bottom:20px">
+      <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:10px">Feedback from my H1 manager, Jody Allard</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:8px">
+        <li style="font-size:13.5px;color:var(--g7);line-height:1.55;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:var(--p);font-weight:700;font-size:11px;top:2px">→</span>Great asset to the team — technically and personally</li>
+        <li style="font-size:13.5px;color:var(--g7);line-height:1.55;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:var(--p);font-weight:700;font-size:11px;top:2px">→</span>Reliably gets things done and often goes beyond expectations</li>
+        <li style="font-size:13.5px;color:var(--g7);line-height:1.55;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:var(--p);font-weight:700;font-size:11px;top:2px">→</span>Positive feedback on my work has come in from across the org</li>
+        <li style="font-size:13.5px;color:var(--g7);line-height:1.55;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:var(--p);font-weight:700;font-size:11px;top:2px">→</span>Craft rituals, RF coverage, and prompt quality all exceeded goals</li>
+        <li style="font-size:13.5px;color:var(--g7);line-height:1.55;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:var(--p);font-weight:700;font-size:11px;top:2px">→</span>Standout self-initiated work: Enchilada prompt project and AI Champions program</li>
+        <li style="font-size:13.5px;color:var(--g7);line-height:1.55;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:var(--p);font-weight:700;font-size:11px;top:2px">→</span>Evolved from newcomer to the team's AI champion — building processes for the broader org, not just CD</li>
+        <li style="font-size:13.5px;color:var(--g7);line-height:1.55;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:var(--p);font-weight:700;font-size:11px;top:2px">→</span>Strong visibility and leadership presence; reducing late-stage prompt risk through consistent prompt crits</li>
+      </ul>
+    </div>
+
+    <div class="ci">
+      <div onclick="toggle(this)" style="cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+        <div><span class="ci-chip">All check-ins</span><div class="ci-q" style="margin-bottom:0">Summarize 2–3 key accomplishments and development opportunities since your last check-in.</div></div>
+        <span class="obj-toggle" style="color:var(--g5);font-size:18px;flex-shrink:0;margin-top:20px">＋</span>
+      </div>
+      <div class="obj-body" style="padding:14px 0 0;border-top:none">
+        <div class="ci-a">
+        <div class="ci-subhead">Accomplishments</div>
+        <ul>
+          <li>Zero-blocker launches across Express, NHX, and NDFP — DQ abandon rate dropped 4.5pp to 6% (goal: 3pp), 83% DQ answer rate, 78% RF inference rate (M3), prompt quality 94% (goal: 90%), craft rituals 7+ (goal: 5)</li>
+          <li>Co-led NCX Info Alignment from scratch — prompt strategy, testing environment, and iteration toward June 5 launch</li>
+          <li>Built reusable AI infrastructure for the team (Claude + Linear skill, prompt tester, enablement plan, CMD deck) and co-led the design team's first Claude Design project — presented at the offsite</li>
+        </ul>
+        <div class="ci-subhead">Development opportunities</div>
+        <ul>
+          <li>Building a stronger record of product-level influence — moments where I shaped strategy beyond content quality</li>
+          <li>Deepening connection with the design platform + AI enablement team as the CD AI Champion — ensuring CD has a voice in what gets built for us</li>
+        </ul>
+      </div>
+      </div>
+    </div>
+
+    <div class="ci">
+      <div onclick="toggle(this)" style="cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+        <div><span class="ci-chip">July check-in only</span><div class="ci-q" style="margin-bottom:0">Do you need any additional clarity to better understand your goals and how they positively impact Thumbtack?</div></div>
+        <span class="obj-toggle" style="color:var(--g5);font-size:18px;flex-shrink:0;margin-top:20px">＋</span>
+      </div>
+      <div class="obj-body" style="padding:14px 0 0;border-top:none">
+        <div class="ci-a">Goals feel clear and well-scoped for where I am in my career. The area I'm most focused on growing into is product-level influence, not just executing on content decisions, but shaping the direction earlier. It would help to identify 1-2 types of moments worth capturing in real time as H2 unfolds, so I'm building that muscle intentionally rather than noticing it in retrospect.</div>
+      </div>
+    </div>
+
+
+    <div class="ci">
+      <div onclick="toggle(this)" style="cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+        <div><span class="ci-chip">All check-ins</span><div class="ci-q" style="margin-bottom:0">What are the 1–2 most impactful actions your manager can do to help you achieve your goals?</div></div>
+        <span class="obj-toggle" style="color:var(--g5);font-size:18px;flex-shrink:0;margin-top:20px">＋</span>
+      </div>
+      <div class="obj-body" style="padding:14px 0 0;border-top:none">
+        <div class="ci-a">
+        <ul>
+          <li><strong>Help capture product-influence moments in real time.</strong> When I push back on a direction or shift a product decision, a quick prompt from my manager to document it would help me build the L6 evidence trail as it happens.</li>
+          <li><strong>Bridge the connection to the AI enablement/design platform team.</strong> I've already connected with the team lead — the ask is backing that relationship so CD's perspective shapes what gets built, not just informs it.</li>
+        </ul>
+      </div>
+      </div>
+    </div>
+  </div>
+
+    </div><!-- /sec-content checkin -->
+  </div>
+
+  <!-- PEER REVIEWERS -->
+  <div class="sec" id="peers">
+    <div class="sec-head" onclick="toggleSec(this)">
+      <span class="sec-chip dark">Suggested Peer Reviewers</span>
+      <div class="sec-rule"></div>
+      <span class="obj-toggle" style="color:var(--g5);font-size:18px;flex-shrink:0">＋</span>
+    </div>
+    <div class="sec-content">
+    <div style="background:var(--w);border-radius:12px;padding:24px 28px;box-shadow:0 1px 5px rgba(0,0,0,.07)">
+      <p style="font-size:13px;color:var(--g5);font-style:italic;margin-bottom:18px;line-height:1.6">For my manager to request H1 peer reviews — listed in priority order.</p>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;align-items:center;gap:12px;background:var(--g1);border-radius:8px;padding:10px 16px">
+          <span style="font-size:11px;font-weight:800;color:var(--g5);min-width:20px;text-align:right">1</span>
+          <span style="font-size:13.5px;font-weight:600;color:var(--d)">Dave Handlong</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;background:var(--g1);border-radius:8px;padding:10px 16px">
+          <span style="font-size:11px;font-weight:800;color:var(--g5);min-width:20px;text-align:right">2</span>
+          <span style="font-size:13.5px;font-weight:600;color:var(--d)">Waqas Sheikh</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;background:var(--g1);border-radius:8px;padding:10px 16px">
+          <span style="font-size:11px;font-weight:800;color:var(--g5);min-width:20px;text-align:right">3</span>
+          <span style="font-size:13.5px;font-weight:600;color:var(--d)">Jesse Stauffer</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;background:var(--g1);border-radius:8px;padding:10px 16px">
+          <span style="font-size:11px;font-weight:800;color:var(--g5);min-width:20px;text-align:right">4</span>
+          <span style="font-size:13.5px;font-weight:600;color:var(--d)">Erin Hogan</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;background:var(--g1);border-radius:8px;padding:10px 16px">
+          <span style="font-size:11px;font-weight:800;color:var(--g5);min-width:20px;text-align:right">5</span>
+          <span style="font-size:13.5px;font-weight:600;color:var(--d)">Prashanth Ramireddy</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;background:var(--g1);border-radius:8px;padding:10px 16px">
+          <span style="font-size:11px;font-weight:800;color:var(--g5);min-width:20px;text-align:right">6</span>
+          <span style="font-size:13.5px;font-weight:600;color:var(--d)">Megan Kelly</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;background:var(--g1);border-radius:8px;padding:10px 16px">
+          <span style="font-size:11px;font-weight:800;color:var(--g5);min-width:20px;text-align:right">7</span>
+          <span style="font-size:13.5px;font-weight:600;color:var(--d)">Mike Lytle</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;background:var(--g1);border-radius:8px;padding:10px 16px">
+          <span style="font-size:11px;font-weight:800;color:var(--g5);min-width:20px;text-align:right">8</span>
+          <span style="font-size:13.5px;font-weight:600;color:var(--d)">Jaclyn Mann</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;background:var(--g1);border-radius:8px;padding:10px 16px">
+          <span style="font-size:11px;font-weight:800;color:var(--g5);min-width:20px;text-align:right">9</span>
+          <span style="font-size:13.5px;font-weight:600;color:var(--d)">Katie Zhu</span>
+        </div>
+      </div>
+    </div>
+    </div><!-- /sec-content -->
+  </div>
+
+</div><!-- /wrap -->
+
+<button class="top-btn" id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function toggleSec(head) {
+  const content = head.nextElementSibling;
+  const icon = head.querySelector('.obj-toggle');
+  const open = content.classList.toggle('open');
+  head.classList.toggle('open', open);
+  if (icon) icon.textContent = open ? '－' : '＋';
+}
+function toggle(head) {
+  const body = head.nextElementSibling;
+  const icon = head.querySelector('.obj-toggle');
+  const open = body.classList.toggle('open');
+  icon.textContent = open ? '－' : '＋';
+}
+
+function openObj(id) {
+  setTimeout(() => {
+    const card = document.getElementById(id);
+    if (!card) return;
+    const body = card.querySelector('.obj-body');
+    const icon = card.querySelector('.obj-toggle');
+    if (body && !body.classList.contains('open')) {
+      body.classList.add('open');
+      if (icon) icon.textContent = '－';
+    }
+    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 50);
+}
+
+// Inject "i" badge into all tooltip targets
+document.querySelectorAll('[data-tip]').forEach(el => {
+  const badge = document.createElement('span');
+  badge.className = 'tip-i';
+  badge.textContent = 'i';
+  const strong = el.querySelector('strong');
+  if (strong) {
+    strong.after(badge);
+  } else {
+    el.appendChild(badge);
+  }
+});
+
+window.addEventListener('scroll', () => {
+  document.getElementById('topBtn').classList.toggle('show', window.scrollY > 400);
+});
+</script>
+</body>
+</html>
