@@ -62,7 +62,7 @@ nav a:hover{background:rgba(255,255,255,.15);color:#fff}
 .signal-body p{font-size:13.5px;color:var(--g7);font-style:italic;line-height:1.6}
 
 /* LEADERSHIP CARDS */
-.lead-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.lead-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;align-items:start}
 .lead-card{background:var(--w);border-radius:12px;padding:18px 20px;box-shadow:0 1px 5px rgba(0,0,0,.07)}
 .lead-card-head{display:flex;align-items:center;gap:8px;margin-bottom:14px}
 .lead-icon{font-size:20px;line-height:1}
@@ -189,7 +189,7 @@ a:hover{text-decoration-style:solid}
       <a class="stat tip-below" href="#obj1" onclick="openObj('obj1')" data-tip="Rich query rate: 25% → 43% after Progressive Expression improvements across M1–M3. Richer customer descriptions = better match quality downstream."><div class="stat-n">+18pp</div><div class="stat-l">Rich Query Rate</div></a>
       <a class="stat tip-below" href="#obj3" onclick="openObj('obj3')" data-tip="78% of Request Form questions are inferred from DQ answers by end of the flow (M3 data, 4/20–5/4). Customers arrive at match with their intent already captured."><div class="stat-n">78%</div><div class="stat-l">RF inferred (M3)</div></a>
       <a class="stat tip-below" href="#obj3" onclick="openObj('obj3')" data-tip="DQ abandon rate dropped from 10.5% → 6% by M3 — a 4.5pp reduction, exceeding the 3pp goal. Driven by targeted prompt rewrites on low-performing touchpoints."><div class="stat-n">4.5pp</div><div class="stat-l">DQ abandon ↓</div></a>
-      <a class="stat tip-below" href="#obj2" onclick="openObj('obj2')" data-tip="Average quality score across all shipped prompt sets, evaluated via the prompt tracker. Goal was 90% — finished 4pp above target."><div class="stat-n">94%</div><div class="stat-l">AI Eval quality (goal: 90%)</div></a>
+      <a class="stat tip-below" href="#obj2" onclick="openObj('obj2')" data-tip="Average quality score across all shipped prompt sets, evaluated via AI eval framework. Goal was 90% — finished 4pp above target."><div class="stat-n">94%</div><div class="stat-l">AI Eval quality (goal: 90%)</div></a>
       <a class="stat tip-below" href="#obj3" onclick="openObj('obj3')" data-tip="Zero prompt-related launch blockers across Express, NHX, and NDFP all half."><div class="stat-n">0</div><div class="stat-l">Launch blockers</div></a>
       <a class="stat tip-below" href="#obj4" onclick="openObj('obj4')" data-tip="Post-session satisfaction score across 27 Office Hours sessions. 15 out of 15 survey respondents said they would return."><div class="stat-n">95%</div><div class="stat-l">Office Hours satisfaction</div></a>
     </div>
@@ -261,7 +261,7 @@ a:hover{text-decoration-style:solid}
           <li>Owns <strong>Office Hours</strong> end-to-end: structure, comms, data, feedback, and iteration — <a href="https://coda.io/d/Design-Home_dtlEln8sq8q/CD-office-hours-sign-up_suhzRphW#Sign-up-sheet_tuX6fS9f" target="_blank" rel="noopener">sign-up sheet ↗</a></li>
           <li>Moved prompt crits upstream to every milestone — repurposed existing bug bashes, no new asks</li>
           <li>Collaborated with my manager on the <strong>CMD pilot deck</strong> to introduce Content Model Design to the first pilot teams — <a href="https://docs.google.com/presentation/d/1YjWmI9u73Q63VH3pee68jro42SrUkTj56jXVyrLming/edit" target="_blank" rel="noopener">view deck ↗</a></li>
-          <li>Built AI tools now used across CD: ceremony skill, prompt tester, <a href="https://linear.app/thumbtack/initiative/llm-prompts-initiative-beta-a54cb3900552/overview" target="_blank" rel="noopener">Linear prompt ceremonies ↗</a>, and prompt tracker (in AI marketplace)</li>
+          <li>Built AI tools now used across CD: ceremony skill, prompt tester, <a href="https://linear.app/thumbtack/initiative/llm-prompts-initiative-beta-a54cb3900552/overview" target="_blank" rel="noopener">Linear prompt ceremonies ↗</a>, and eval framework (in AI marketplace)</li>
           <li>Served as <strong>onboarding buddy</strong> for the new NDFP content designer — shaped onboarding docs, met weekly, shared company context, prompt rituals, and AI tools</li>
         </ul></div>
       </div>
@@ -276,7 +276,7 @@ a:hover{text-decoration-style:solid}
     </div>
     <div class="summary">
       <p>This half I expanded scope mid-stream, shipped zero-blocker launches across 7+ features, and exceeded every quality and coverage target. I co-led NCX Information Alignment as the prompt strategy owner, led Predictive Text standups, self-injected onto Enchilada before it was staffed, and covered NDFP as the sole CD during an open headcount while owning Express. DQ abandon rate dropped 4.5pp (exceeding the 3pp goal), answer rate hit 83%, and 78% of RF questions are now inferred at end of the DQ flow. <strong>The metrics moved because the content decisions were on target.</strong></p>
-      <p>The work I'm most proud of is the infrastructure I built and the programs I shaped. I reimagined Office Hours into a strategic program that surfaced real content needs across the company. I designed the CD AI enablement plan. I built the prompt tracker and prompt tools the team now uses. <strong>The throughline is the same: I see what's missing, I build it, and I make it available to everyone. That's the L6 trajectory. 💪🏽</strong></p>
+      <p>The work I'm most proud of is the infrastructure I built and the programs I shaped. I reimagined Office Hours into a strategic program that surfaced real content needs across the company. I designed the CD AI enablement plan. I built the eval framework and prompt tools the team now uses. <strong>The throughline is the same: I see what's missing, I build it, and I make it available to everyone. That's the L6 trajectory. 💪🏽</strong></p>
     </div>
   </div>
 
@@ -317,7 +317,7 @@ a:hover{text-decoration-style:solid}
             <div data-tip="Customer-facing communications for the NDFP program, including transactional and lifecycle messaging." style="background:var(--w);border:1px solid var(--g3);border-radius:6px;padding:7px 10px;font-size:12.5px;color:var(--g7)"><strong style="color:var(--d)">NDFP Comms</strong><br><span style="font-size:11px;color:var(--g5)">NDFP</span></div>
             <div data-tip="Content for customer preference settings around in-person, remote, and hybrid service options within the NDFP flow." style="background:var(--w);border:1px solid var(--g3);border-radius:6px;padding:7px 10px;font-size:12.5px;color:var(--g7)"><strong style="color:var(--d)">Hybrid Preferences</strong><br><span style="font-size:11px;color:var(--g5)">NDFP</span><br><a href="https://docs.google.com/document/d/18UAgEE3ZPlOSaw95QX0hy9Ig-KQkLrDy08a_soapOSQ/edit?tab=t.0#heading=h.pmgnbjdgb9tm" target="_blank" rel="noopener" style="font-size:10.5px;font-weight:600;text-decoration:none;color:var(--p)">Fast changes ↗</a></div>
             <div data-tip="Welcome and setup experience for new participants in the NDFP program, helping them understand the flow and get started." style="background:var(--w);border:1px solid var(--g3);border-radius:6px;padding:7px 10px;font-size:12.5px;color:var(--g7)"><strong style="color:var(--d)">NDFP Onboarding</strong><br><span style="font-size:11px;color:var(--g5)">NDFP</span></div>
-            <div data-tip="LLM prompt that sequences and surfaces Dynamic Questions to reduce customer-pro mismatches. Iterated through 13+ versions with live testing across 30+ real service scenarios. Co-built Info Alignment prototype in Claude Design with Erin Hogan." style="background:var(--w);border:1px solid var(--g3);border-radius:6px;padding:7px 10px;font-size:12.5px;color:var(--g7);border-color:var(--pm)"><strong style="color:var(--d)">Info Alignment DQ Prompt</strong><br><span style="font-size:11px;color:var(--p);font-weight:600">Prompt · NCX &nbsp;·&nbsp; </span><span style="font-size:11px;color:var(--a);font-weight:600">Ships June 23</span><br><a href="https://docs.google.com/document/d/1V7MLCAYQgTezAaK-zbFA0tSvSCcqGLufV2HDXP2kVKA/edit?tab=t.hy2fe0cklzis#heading=h.s4lyew6tiaph" target="_blank" rel="noopener" style="font-size:10.5px;font-weight:600;text-decoration:none;color:var(--p)">V1 proposal ↗</a> &nbsp;<a href="https://claude.ai/design/p/019dcabf-3a1d-709e-ad8a-f247616bb25d" target="_blank" rel="noopener" style="font-size:10.5px;font-weight:600;text-decoration:none;color:var(--p)">Prototype ↗</a></div>
+            <div data-tip="LLM prompt that sequences and surfaces Dynamic Questions to reduce customer-pro mismatches. Iterated through 13+ versions with live testing across 30+ real service scenarios. Co-built Info Alignment prototype in Claude Design with Erin Hogan." style="background:var(--w);border:1px solid var(--g3);border-radius:6px;padding:7px 10px;font-size:12.5px;color:var(--g7);border-color:var(--pm)"><strong style="color:var(--d)">Info Alignment DQ Prompt</strong><br><span style="font-size:11px;color:var(--p);font-weight:600">Prompt · NCX &nbsp;·&nbsp; </span><span style="font-size:11px;color:var(--a);font-weight:600">Ships June 5</span><br><a href="https://docs.google.com/document/d/1V7MLCAYQgTezAaK-zbFA0tSvSCcqGLufV2HDXP2kVKA/edit?tab=t.hy2fe0cklzis#heading=h.s4lyew6tiaph" target="_blank" rel="noopener" style="font-size:10.5px;font-weight:600;text-decoration:none;color:var(--p)">V1 proposal ↗</a> &nbsp;<a href="https://claude.ai/design/p/019dcabf-3a1d-709e-ad8a-f247616bb25d" target="_blank" rel="noopener" style="font-size:10.5px;font-weight:600;text-decoration:none;color:var(--p)">Prototype ↗</a></div>
           </div>
 
         </div>
@@ -345,11 +345,11 @@ a:hover{text-decoration-style:solid}
           <div class="row">
             <div class="row-goal">Goal: Complete 5 AI-assisted content initiatives</div>
             <ul>
-              <li>Completed 5+ including Claude ceremony skill, CMD deck, prompt tracker, Enchilada V0, Claude designs for Info Alignment, and Express prompt sets</li>
+              <li>Completed 5+ including Claude ceremony skill, CMD deck, eval framework, Enchilada V0, Claude designs for Info Alignment, and Express prompt sets</li>
             </ul>
           </div>
           <div class="row">
-            <div class="row-goal">In-flight · <a href="https://docs.google.com/document/d/1V7MLCAYQgTezAaK-zbFA0tSvSCcqGLufV2HDXP2kVKA/edit?tab=t.hy2fe0cklzis#heading=h.s4lyew6tiaph" target="_blank" rel="noopener">NCX Information Alignment</a> — craft &amp; content system (targeting June 23)</div>
+            <div class="row-goal">In-flight · <a href="https://docs.google.com/document/d/1V7MLCAYQgTezAaK-zbFA0tSvSCcqGLufV2HDXP2kVKA/edit?tab=t.hy2fe0cklzis#heading=h.s4lyew6tiaph" target="_blank" rel="noopener">NCX Information Alignment</a> — craft &amp; content system (targeting June 5)</div>
             <ul>
               <li>Co-leading with Erin Hogan (Design), Katie Zhu (PM), Jesse Stauffer (Eng), and Megan Kelly (Data) — prompt strategy owner</li>
               <li>Defined DQ question ordering framework (skill fit → scope → logistics → preferences → budget → scheduling) — adopted across V1</li>
@@ -370,7 +370,7 @@ a:hover{text-decoration-style:solid}
           <div class="obj-summary">Built the tools and programs others now use. Led the AI cultural shift for CD.</div>
           <div class="obj-metrics">
             <span class="om">94% AI eval quality</span>
-            <span class="om">Prompt tracker in AI marketplace</span>
+            <span class="om">Eval framework in AI marketplace</span>
             <span class="om">Biweekly AI build time</span>
           </div>
         </div>
@@ -382,7 +382,7 @@ a:hover{text-decoration-style:solid}
           <div class="row">
             <div class="row-goal">Goal: Lead or contribute to an LLM eval framework</div>
             <ul>
-              <li>Built prompt tracker for measuring prompt quality — now in the <strong>org-wide AI tools marketplace</strong></li>
+              <li>Piloted eval framework for measuring prompt quality — now in the <strong>org-wide AI tools marketplace</strong></li>
               <li>Completed company-wide <strong>30-Day AI Explorer program</strong> and a <strong>full-day AI Champions workshop</strong> to build technical depth</li>
               <li>Led AI Champions workshop; presented CD's Claude Design experience at the company offsite</li>
               <li>Co-led the <strong>design AI build session at the company offsite</strong> — planned with AI Champions + design leadership — <a href="https://docs.google.com/presentation/d/1HsNn_d2YYd8O9y5mwEIg8vO0rXrtiNyR_hHeFEpeslg/edit" target="_blank" rel="noopener">Design Day deck ↗</a></li>
@@ -464,9 +464,9 @@ a:hover{text-decoration-style:solid}
             </ul>
           </div>
           <div class="row">
-            <div class="row-goal">In-flight · NCX Information Alignment — launch readiness (targeting June 23)</div>
+            <div class="row-goal">In-flight · NCX Information Alignment — launch readiness (targeting June 5)</div>
             <ul>
-              <li>Co-leading V1 across Design, PM, Eng, and Data — on track for June 23 with no prompt blockers</li>
+              <li>Co-leading V1 across Design, PM, Eng, and Data — on track for June 5 with no prompt blockers</li>
               <li>Led live testing sessions; iterated in real time based on results</li>
               <li>V2 (structural UX changes) scoped and handed off to H2</li>
             </ul>
@@ -610,7 +610,7 @@ a:hover{text-decoration-style:solid}
             <span class="obj-toggle" style="color:var(--p);flex-shrink:0">＋</span>
           </div>
           <div class="obj-body" style="padding:0 16px 14px;border-top:none">
-            <p style="font-size:13px;color:var(--g7);line-height:1.55">Prompt tracker in the org-wide AI marketplace. Claude + Linear ceremony skill. Claude + OpenAI prompt tester. A testing environment with 30+ real service scenarios the team runs without eng support. These weren't assigned — they were gaps I identified and filled.</p>
+            <p style="font-size:13px;color:var(--g7);line-height:1.55">Eval framework in the org-wide AI marketplace. Claude + Linear ceremony skill. Claude + OpenAI prompt tester. A testing environment with 30+ real service scenarios the team runs without eng support. These weren't assigned — they were gaps I identified and filled.</p>
           </div>
         </div>
 
@@ -715,7 +715,7 @@ a:hover{text-decoration-style:solid}
         <div class="ci-subhead">Accomplishments</div>
         <ul>
           <li>Zero-blocker launches across Express, NHX, and NDFP — DQ abandon rate dropped 4.5pp to 6% (goal: 3pp), 83% DQ answer rate, 78% RF inference rate (M3), prompt quality 94% (goal: 90%), craft rituals 7+ (goal: 5)</li>
-          <li>Co-led NCX Info Alignment from scratch — prompt strategy, testing environment, and iteration toward June 23 launch</li>
+          <li>Co-led NCX Info Alignment from scratch — prompt strategy, testing environment, and iteration toward June 5 launch</li>
           <li>Built reusable AI infrastructure for the team (Claude + Linear skill, prompt tester, enablement plan, CMD deck) and co-led the design team's first Claude Design project — presented at the offsite</li>
         </ul>
         <div class="ci-subhead">Development opportunities</div>
@@ -765,31 +765,31 @@ a:hover{text-decoration-style:solid}
       <div style="display:flex;flex-direction:column;gap:8px">
         <div style="display:flex;align-items:center;gap:12px;background:var(--g1);border-radius:8px;padding:10px 16px">
           <span style="font-size:11px;font-weight:800;color:var(--g5);min-width:20px;text-align:right">1</span>
-          <span style="font-size:13.5px;font-weight:600;color:var(--d)">Jesse Stauffer</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;background:var(--g1);border-radius:8px;padding:10px 16px">
-          <span style="font-size:11px;font-weight:800;color:var(--g5);min-width:20px;text-align:right">2</span>
-          <span style="font-size:13.5px;font-weight:600;color:var(--d)">Erin Hogan</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;background:var(--g1);border-radius:8px;padding:10px 16px">
-          <span style="font-size:11px;font-weight:800;color:var(--g5);min-width:20px;text-align:right">3</span>
           <span style="font-size:13.5px;font-weight:600;color:var(--d)">Dave Handlong</span>
         </div>
         <div style="display:flex;align-items:center;gap:12px;background:var(--g1);border-radius:8px;padding:10px 16px">
+          <span style="font-size:11px;font-weight:800;color:var(--g5);min-width:20px;text-align:right">2</span>
+          <span style="font-size:13.5px;font-weight:600;color:var(--d)">Waqas Sheikh</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;background:var(--g1);border-radius:8px;padding:10px 16px">
+          <span style="font-size:11px;font-weight:800;color:var(--g5);min-width:20px;text-align:right">3</span>
+          <span style="font-size:13.5px;font-weight:600;color:var(--d)">Jesse Stauffer</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;background:var(--g1);border-radius:8px;padding:10px 16px">
           <span style="font-size:11px;font-weight:800;color:var(--g5);min-width:20px;text-align:right">4</span>
-          <span style="font-size:13.5px;font-weight:600;color:var(--d)">Prashanth Ramireddy</span>
+          <span style="font-size:13.5px;font-weight:600;color:var(--d)">Erin Hogan</span>
         </div>
         <div style="display:flex;align-items:center;gap:12px;background:var(--g1);border-radius:8px;padding:10px 16px">
           <span style="font-size:11px;font-weight:800;color:var(--g5);min-width:20px;text-align:right">5</span>
-          <span style="font-size:13.5px;font-weight:600;color:var(--d)">Megan Kelly</span>
+          <span style="font-size:13.5px;font-weight:600;color:var(--d)">Prashanth Ramireddy</span>
         </div>
         <div style="display:flex;align-items:center;gap:12px;background:var(--g1);border-radius:8px;padding:10px 16px">
           <span style="font-size:11px;font-weight:800;color:var(--g5);min-width:20px;text-align:right">6</span>
-          <span style="font-size:13.5px;font-weight:600;color:var(--d)">Mike Lytle</span>
+          <span style="font-size:13.5px;font-weight:600;color:var(--d)">Megan Kelly</span>
         </div>
         <div style="display:flex;align-items:center;gap:12px;background:var(--g1);border-radius:8px;padding:10px 16px">
           <span style="font-size:11px;font-weight:800;color:var(--g5);min-width:20px;text-align:right">7</span>
-          <span style="font-size:13.5px;font-weight:600;color:var(--d)">Waqas Sheikh</span>
+          <span style="font-size:13.5px;font-weight:600;color:var(--d)">Mike Lytle</span>
         </div>
         <div style="display:flex;align-items:center;gap:12px;background:var(--g1);border-radius:8px;padding:10px 16px">
           <span style="font-size:11px;font-weight:800;color:var(--g5);min-width:20px;text-align:right">8</span>
