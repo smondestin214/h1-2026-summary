@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarah Mondestin · L6 Criteria Match</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --p:#6B3FA0;--pd:#4A2878;--pl:#EDE7F6;--pm:#D4BBEE;
+  --g:#1E6B3A;--gl:#E6F4EC;
+  --a:#B45309;--al:#FEF3C7;
+  --d:#111827;--g7:#374151;--g5:#6B7280;--g3:#D1D5DB;--g1:#F9FAFB;
+  --w:#fff;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#F0EBF8;color:var(--g7);font-size:14px;line-height:1.6}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:99;background:var(--pd);box-shadow:0 2px 10px rgba(74,40,120,.3)}
+.nav-top{height:44px;display:flex;align-items:center;padding:0 24px;gap:8px}
+.nav-name{font-size:13px;font-weight:700;color:#fff;margin-right:auto}
+.nav-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,.15)}
+.nav-tab{font-size:12px;font-weight:600;color:rgba(255,255,255,.6);text-decoration:none;padding:9px 20px;border-bottom:2px solid transparent;transition:.15s;white-space:nowrap}
+.nav-tab:hover{color:#fff;background:rgba(255,255,255,.07)}
+.nav-tab.active{color:#fff;border-bottom-color:#fff;background:rgba(255,255,255,.1)}
+
+/* PAGE */
+.wrap{max-width:960px;margin:0 auto;padding:32px 20px 80px}
+
+/* SECTION DIVIDERS */
+.cat-head{display:flex;align-items:center;gap:10px;margin:32px 0 14px}
+.cat-head:first-child{margin-top:0}
+.cat-emoji{font-size:18px;line-height:1}
+.cat-label{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--d)}
+.cat-rule{flex:1;height:1px;background:var(--g3)}
+
+/* CRITERIA CARDS — two-column layout */
+.crit-card{background:var(--w);border-radius:12px;box-shadow:0 1px 5px rgba(0,0,0,.07);margin-bottom:10px;overflow:hidden}
+.crit-card-head{display:grid;grid-template-columns:1fr 1fr;min-height:80px}
+.crit-left{padding:18px 20px;border-right:1px solid var(--g3);background:var(--gl)}
+.crit-right{padding:18px 20px}
+.crit-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--g);margin-bottom:6px}
+.crit-label.ev{color:var(--p)}
+.crit-text{font-size:12.5px;color:var(--g7);line-height:1.65;font-style:italic}
+.crit-ev{list-style:none;display:flex;flex-direction:column;gap:8px}
+.crit-ev li{font-size:13px;line-height:1.5;padding-left:16px;position:relative;color:var(--g7)}
+.crit-ev li::before{content:"▸";position:absolute;left:0;color:var(--p);font-size:10px;top:3px}
+
+/* BACK TO TOP */
+.top-btn{position:fixed;bottom:28px;right:28px;background:var(--g);color:#fff;border:none;border-radius:50%;width:40px;height:40px;font-size:18px;cursor:pointer;box-shadow:0 2px 12px rgba(30,107,58,.4);display:flex;align-items:center;justify-content:center;opacity:0;transition:.2s;z-index:99}
+.top-btn.show{opacity:1}
+
+/* links */
+a{color:var(--p);text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px;font-weight:500}
+a:hover{text-decoration-style:solid}
+
+@media(max-width:640px){
+  .crit-card-head{grid-template-columns:1fr}
+  .crit-left{border-right:none;border-bottom:1px solid var(--g3)}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-top">
+    <span class="nav-name">Sarah Mondestin · H1 2026</span>
+  </div>
+  <div class="nav-tabs">
+    <a href="index.html" class="nav-tab">Achievement Summary</a>
+    <a href="l6-match.html" class="nav-tab active">L6 Criteria Match</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div style="background:var(--w);border-radius:12px;padding:20px 24px;box-shadow:0 1px 5px rgba(0,0,0,.07);margin-bottom:28px;display:flex;align-items:flex-start;gap:14px">
+    <span style="font-size:22px;flex-shrink:0">📋</span>
+    <div>
+      <div style="font-size:15px;font-weight:700;color:var(--d);margin-bottom:4px">Sarah Mondestin → Senior Content Designer (L6)</div>
+      <p style="font-size:13px;color:var(--g5);line-height:1.6">Each card maps the L6 rubric criteria (left) directly to supporting evidence from H1 2026 (right). Criteria language is from the CD leveling doc.</p>
+    </div>
+  </div>
+
+  <!-- ⚡ IMPACT -->
+  <div class="cat-head">
+    <span class="cat-emoji">⚡</span>
+    <span class="cat-label">Impact</span>
+    <div class="cat-rule"></div>
+  </div>
+
+  <div class="crit-card">
+    <div class="crit-card-head">
+      <div class="crit-left">
+        <div class="crit-label">Scope — L6 criteria</div>
+        <p class="crit-text">"In addition to ownership of projects within your product team, substantial contributions to team OKRs. Works autonomously to complete projects on time, at a high-quality bar. Capable of working on several highly complex projects in parallel. Thinks broader than your specific product pod, finds opportunities to proactively make an impact beyond your lane, and executes on those opportunities, both in your pod and outside of it."</p>
+      </div>
+      <div class="crit-right">
+        <div class="crit-label ev">Evidence · H1 2026</div>
+        <ul class="crit-ev">
+          <li>Owned Express content design and covered NDFP as sole CD during an open headcount — three product areas in parallel, zero blockers.</li>
+          <li>Self-injected onto Enchilada before it was staffed. Not assigned — identified the gap and moved.</li>
+          <li>Co-led NCX Information Alignment as prompt strategy owner across Design, PM, Eng, and Data — scope beyond her pod, initiated by her.</li>
+          <li>Exceeded every H1 OKR: DQ abandon ↓4.5pp (goal 3pp) · AI eval 94% (goal 90%) · RF coverage 51% (goal 40%) · craft rituals 7+ (goal 5).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="crit-card">
+    <div class="crit-card-head">
+      <div class="crit-left">
+        <div class="crit-label">Influence — L6 criteria</div>
+        <p class="crit-text">"Contributes to team strategy and direction with your design projects, visioning, and involvement in planning. Your influence on the thinking and decisions of XFN partners leads to tangible impact. Your work is leveraged by others in their projects. You're a regular participant in design crits and provide feedback that improves the work of others. You're a role model who makes the rest of the content design team better. The way you live company values positively influences others."</p>
+      </div>
+      <div class="crit-right">
+        <div class="crit-label ev">Evidence · H1 2026</div>
+        <ul class="crit-ev">
+          <li>Moved prompt crits upstream to every milestone — a process change that now applies across the whole team, not just her projects.</li>
+          <li>Designed the <a href="https://docs.google.com/document/d/1DF0Y_VQ2n3t9jw4vieEMJA2_uAEzMgpnsG0TSRD1v3c/edit?tab=t.0" target="_blank" rel="noopener">CD AI enablement plan</a>. Led the design team's first Claude Design project. Both referenced and used beyond her immediate work.</li>
+          <li>Prompt tracker, ceremony skill, and DQ tester are actively used by teammates. Her work is in the AI marketplace.</li>
+          <li>Led Predictive Text standups — owned XFN alignment across Eng, PM, and Data through launch. Adoption reached ~50%.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="crit-card" style="margin-bottom:0">
+    <div class="crit-card-head">
+      <div class="crit-left">
+        <div class="crit-label">Execution — L6 criteria</div>
+        <p class="crit-text">"Drives strong solutions and collaborates to get them shipped, resulting in tangible impact on the user experience. Balancing speed and efficiency without compromising quality plays a more critical role in your work. Contributes to the design system. Proactively contributes to design team culture for tangible impact."</p>
+      </div>
+      <div class="crit-right">
+        <div class="crit-label ev">Evidence · H1 2026</div>
+        <ul class="crit-ev">
+          <li>Zero launch blockers across 7+ features, three product areas, all half.</li>
+          <li>Scope expanded mid-half. Quality held. No deadlines missed.</li>
+          <li>Took Office Hours from ad hoc to a structured program with data and feedback loops. 27 sessions, 9 pods, 95% satisfaction.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✏️ CRAFT -->
+  <div class="cat-head">
+    <span class="cat-emoji">✏️</span>
+    <span class="cat-label">Craft / Expertise</span>
+    <div class="cat-rule"></div>
+  </div>
+
+  <div class="crit-card">
+    <div class="crit-card-head">
+      <div class="crit-left">
+        <div class="crit-label">Creativity, Quality & Craft — L6 criteria</div>
+        <p class="crit-text">"Crafts product narratives with partners and drives end-to-end content strategy for projects. Understands industry patterns and can identify when and how they are effectively applied in your work. Creates content frameworks and terminology guides when existing documentation doesn't provide a solution. Explores a broad range of ideas in your work that balances various trade-offs between speed and quality."</p>
+      </div>
+      <div class="crit-right">
+        <div class="crit-label ev">Evidence · H1 2026</div>
+        <ul class="crit-ev">
+          <li>Owned end-to-end content strategy for NCX Information Alignment: V0 prompt framework → iteration → June 23 launch.</li>
+          <li>Built the DQ testing environment from scratch — 30+ real service scenarios, no existing framework to draw from.</li>
+          <li>7+ craft rituals shipped and adopted by the team: prompt crit process, ceremony tracker, AI build time format.</li>
+          <li>94% AI eval quality across all shipped prompt sets. Goal was 90%.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="crit-card">
+    <div class="crit-card-head">
+      <div class="crit-left">
+        <div class="crit-label">Business Context — L6 criteria</div>
+        <p class="crit-text">"Deep understanding of our business goals and identifies opportunities to impact metrics. Demonstrates strong knowledge of competitors and market trends and can apply to your work."</p>
+      </div>
+      <div class="crit-right">
+        <div class="crit-label ev">Evidence · H1 2026</div>
+        <ul class="crit-ev">
+          <li>Tracked and moved product metrics — abandon rate, answer rate, RF inference, rich query rate — not just craft quality scores.</li>
+          <li>Framed DQ drop-off as a business problem and drove the content decisions that produced a 4.5pp reduction.</li>
+          <li>Applied working knowledge of LLM prompting, eval frameworks, and AI tooling to inform how the broader team operates.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="crit-card" style="margin-bottom:0">
+    <div class="crit-card-head">
+      <div class="crit-left">
+        <div class="crit-label">User Centric — L6 criteria</div>
+        <p class="crit-text">"Partners with research and analytics throughout the lifecycle of a project to better understand our customers."</p>
+      </div>
+      <div class="crit-right">
+        <div class="crit-label ev">Evidence · H1 2026</div>
+        <ul class="crit-ev">
+          <li>Partnered with Data (Alex Huang) across M1–M3. Prompt iterations were driven by data, not instinct.</li>
+          <li>DQ testing environment built from 30+ real service scenarios — content decisions grounded in actual customer behavior.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🤝 COLLABORATION -->
+  <div class="cat-head">
+    <span class="cat-emoji">🤝</span>
+    <span class="cat-label">Collaboration / People Skills</span>
+    <div class="cat-rule"></div>
+  </div>
+
+  <div class="crit-card">
+    <div class="crit-card-head">
+      <div class="crit-left">
+        <div class="crit-label">Communication — L6 criteria</div>
+        <p class="crit-text">"Communicates effectively with group and org leaders to influence their thinking and decisions. Is a model recipient of feedback — not only handling it constructively, but actively modeling it to help others."</p>
+      </div>
+      <div class="crit-right">
+        <div class="crit-label ev">Evidence · H1 2026</div>
+        <ul class="crit-ev">
+          <li>Presented at the company offsite — AI Champions program and Claude Design project — to design and company leadership.</li>
+          <li>XFN partners consistently cite communication as a differentiator: clear rationale, structured feedback, accessible thought process.</li>
+          <li>Co-built the CMD pilot deck with her manager — translated an emerging practice into a clear narrative for pilot teams.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="crit-card">
+    <div class="crit-card-head">
+      <div class="crit-left">
+        <div class="crit-label">Partnership — L6 criteria</div>
+        <p class="crit-text">"Brings partners along for a consistently positive experience. Educates others on the value and processes of content design."</p>
+      </div>
+      <div class="crit-right">
+        <div class="crit-label ev">Evidence · H1 2026</div>
+        <ul class="crit-ev">
+          <li>27 Office Hours sessions, 9 pods, 95% satisfaction, 15/15 would return. Partners across PM, Eng, Data, and CommStrat.</li>
+          <li>Shared prompt rituals and AI tools directly with engineering partners — active education on CD's process and value, not passive availability.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="crit-card" style="margin-bottom:0">
+    <div class="crit-card-head">
+      <div class="crit-left">
+        <div class="crit-label">Leadership — L6 criteria</div>
+        <p class="crit-text">"Is able to delegate with ease and comfort if a project requires it. Others actively seek their feedback, and listen to their guidance. Effectively co-leads their product team with other XFN leads."</p>
+      </div>
+      <div class="crit-right">
+        <div class="crit-label ev">Evidence · H1 2026</div>
+        <ul class="crit-ev">
+          <li>Led Predictive Text standups — co-led XFN alignment across PM and Eng throughout the rollout.</li>
+          <li>Office Hours booked 3–4 weeks out. Demand exceeded capacity, which prompted a second weekly slot.</li>
+          <li>Onboarding buddy for the incoming NDFP content designer.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🌱 CITIZENSHIP -->
+  <div class="cat-head">
+    <span class="cat-emoji">🌱</span>
+    <span class="cat-label">Citizenship</span>
+    <div class="cat-rule"></div>
+  </div>
+
+  <div class="crit-card">
+    <div class="crit-card-head">
+      <div class="crit-left">
+        <div class="crit-label">Mentorship — L6 criteria</div>
+        <p class="crit-text">"A strong mentor and role model when it comes to craft, collaboration, and citizenship."</p>
+      </div>
+      <div class="crit-right">
+        <div class="crit-label ev">Evidence · H1 2026</div>
+        <ul class="crit-ev">
+          <li>Onboarding buddy for the incoming NDFP content designer.</li>
+          <li>Office Hours designed as a teaching space. Attendees consistently note they leave understanding the "why," not just the fix.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="crit-card" style="margin-bottom:0">
+    <div class="crit-card-head">
+      <div class="crit-left">
+        <div class="crit-label">Community — L6 criteria</div>
+        <p class="crit-text">"Actively improves our internal processes and ways of building connection. Strong contributor in interviewing and recruiting efforts."</p>
+      </div>
+      <div class="crit-right">
+        <div class="crit-label ev">Evidence · H1 2026</div>
+        <ul class="crit-ev">
+          <li>Rebuilt Office Hours from scratch — structure, scheduling, data, and feedback loops. Now a program the company actively uses.</li>
+          <li>Co-led the design AI build session at the company offsite — scope beyond CD, to the broader design org.</li>
+          <li>Led biweekly AI build time for the CD team — recurring, structured, with sharing and accountability built in.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<button class="top-btn" id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+window.addEventListener('scroll',()=>{
+  document.getElementById('topBtn').classList.toggle('show',window.scrollY>300)
+})
+</script>
+</body>
+</html>
